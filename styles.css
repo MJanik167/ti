@@ -1,0 +1,71 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+
+#desktop {
+    width: 100vw;
+    height: 100vh;
+    background-image: url(https://substackcdn.com/image/fetch/$s_!DSDj!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F451735cb-c5f9-4f24-a520-17c8cda161f4_1440x900.png);
+    background-size: cover;
+    /* background-color: #007400; */
+}
+
+.icon {
+    width: 64px;
+    height: 64px;
+    background-color: "#FFFFFF";
+    margin: 16px;
+    display: inline-block;
+    background-image: url(https://assets.techrepublic.com/uploads/2016/11/giphy-5.gif);
+    background-size: cover;
+    position: absolute;
+}
+
+span {
+    position: absolute;
+    color: white;
+    text-align: center;
+    margin-top: 70px;
+}
+
+#program {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    width: 80vw;
+    height: 80vh;
+    background-color: rgb(161, 161, 161);
+    border: 10px solid gray;
+    margin: 10vw;
+    margin-top: 5vh;
+}
+
+#sidebar {
+    width: 25%;
+    height: 100%;
+    background-color: rgb(100, 100, 100);
+}
+
+
+#camera {
+    width: 100%;
+    height: 40%;
+    background-image: url(https://media.tenor.com/tFW57H6ZyUUAAAAe/alien-cat.png);
+    background-size: cover;
+}
+
+#content {
+    width: 75%;
+    height: 100%;
+    background-color: white;
+}
+
+.scene {
+    width: 100%;
+    height: 100%;
+    background-color: black;
+}
