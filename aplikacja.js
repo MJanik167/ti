@@ -37,7 +37,8 @@ function init() {
 
     function animate() {
         renderer.render(scene, camera)
-        mesh.rotation.x = mesh.rotation.x + Math.PI / 200;
+        mesh.rotation.x = mesh.rotation.x + Math.PI / 2000;
+        mesh.rotation.y = mesh.rotation.y + Math.PI / 1000;
         requestAnimationFrame(animate)
     }
 
