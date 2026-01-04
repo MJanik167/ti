@@ -42,16 +42,10 @@ function init() {
     const textureLoader = new THREE.TextureLoader()
     const colorMap = textureLoader.load("8081_earthmap10k.jpg")
     const nightMap = textureLoader.load("8081_earthlights10k.jpg")
+    const alphaMap = textureLoader.load("8081_earthspec10k.jpg")
     const elevMap = textureLoader.load("8081_earthbump10k.jpg")
 
-    const geo = new THREE.IcosahedronGeometry(1, 10)
-    const mat = new THREE.PointsMaterial({
-        color: 0xffffff,
-        map: elevMap,
-        transparenct: false,
-    })
-    const icosahedron = new THREE.Points(geo, mat)
-    //globe.add(icosahedron)
+
     const stars = getStarfield({ numStars: 1000 })
     scene.add(stars)
 
@@ -60,14 +54,20 @@ function init() {
     const vertexShader = `
         uniform float size;
         uniform sampler2D pointTexture;
+        uniform float time;
 
         varying vec2 vUv;
-        varying float vElevation;
+        varying float vElevation;    
+        varying float vVisible;
+
 
         void main(){
             vUv = uv;
             vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );
+            vec3 vNormal = normalMatrix * normal;
+            vVisible = step(0.0, dot( -normalize(mvPosition.xyz), normalize(vNormal)));
             vElevation = texture2D( pointTexture, uv ).r;
+            //mvPosition.z = mvPosition.z - 10.0/(time*(mvPosition.y/100.0+1.0));
             mvPosition.z = mvPosition.z - normalize( mvPosition ).z * vElevation * .20;
             gl_PointSize = size;
             gl_Position = projectionMatrix * mvPosition;    
@@ -76,59 +76,77 @@ function init() {
 
     const fragmentShader = `
         uniform sampler2D colorMap;
-        vec3 pal( in float t, in vec3 a, in vec3 b, in vec3 c, in vec3 d )
-        {
-            return a + b*cos( 6.28318*(c*t+d) );
-        }
-
-        vec3 earthPalette(float t)
-        {
-        return pal(
-                t,
-                vec3(0.698, 0.638, -1.532),  // a: base (light, warm)
-                vec3(0.500, 0.388, -2.562),  // b: contrast
-                vec3(-0.922, -0.032, 0.418),  // c: frequency
-                vec3(0.000, -0.002, -1.892)   // d: phase shift
-            );
-        }
-
+        uniform sampler2D alphaMap;
+        uniform float alphaChannel;
     
         varying vec2 vUv;
         varying float vElevation;
+        varying float vVisible;
 
         void main(){
-            vec3 color = texture2D( colorMap, vUv ).rgb;
-            float alpha = 1.0;
-            if (vElevation > 0.01) {
-            alpha = 1.0;
-            }
+            if (floor(vVisible + 0.1) == 0.0) discard;
 
-            gl_FragColor = vec4( color, alpha );
+            vec3 color = texture2D( colorMap, vUv ).rgb;
+            float alpha=0.0;
+            if (alphaChannel == 1.0){
+                alpha = 1.0 - texture2D( alphaMap, vUv ).r ;
+            }
+            if (alphaChannel == 0.0){
+               alpha = texture2D( alphaMap, vUv ).r ;
+               if (alpha < 0.5) discard;
+            }
+            gl_FragColor = vec4( color, alpha);
             }
     `
 
     const uniforms = {
+        time: { type: "f", value: 0 },
         size: { type: "f", value: 5 },
         pointTexture: { type: "t", value: elevMap },
-        colorMap: { type: "t", value: colorMap }
+        colorMap: { type: "t", value: colorMap },
+        alphaMap: { type: "t", value: alphaMap },
+        alphaChannel: { type: "f", value: 1.0 }
     }
 
     const pointsMat = new THREE.ShaderMaterial({
         uniforms: uniforms,
         vertexShader: vertexShader,
         fragmentShader: fragmentShader,
-        transparent: true
+        transparent: true,
+        wireframe: true
     })
     const mesh = new THREE.Mesh(pointsGeo, pointsMat)
     globe.add(mesh)
 
+    const uniforms2 = {
+        time: { type: "f", value: 0 },
+        size: { type: "f", value: 5 },
+        pointTexture: { type: "t", value: elevMap },
+        colorMap: { type: "t", value: colorMap },
+        alphaMap: { type: "t", value: alphaMap },
+        alphaChannel: { type: "f", value: 0.0 }
+    }
+    const seaGeo = new THREE.IcosahedronGeometry(1, 7)
+    const seaMat = new THREE.ShaderMaterial({
+        uniforms: uniforms2,
+        vertexShader: vertexShader,
+        fragmentShader: fragmentShader,
+        transparent: false,
+        wireframe: true
+    })
+    const seaMesh = new THREE.Mesh(seaGeo, seaMat)
+    globe.add(seaMesh)
+
     scene.add(globe)
     scene.add(camera)
+
+    let time = 0;
     function animate() {
 
 
         //globe.rotation.y += 0.001;
-
+        time += 0.1;
+        uniforms.time = { value: time }
         controls.update();
         renderer.render(scene, camera)
 
