@@ -179,14 +179,17 @@ async function init() {
         let geometry = new THREE.SphereGeometry(0.005, 16, 16);
         let material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
         let sphere = new THREE.Mesh(geometry, material);
+        let coords = cuda[p].coordinates.map(x => x * 1.015);
         sphere.position.set(
-            cuda[p].coordinates[0],
-            cuda[p].coordinates[1],
-            cuda[p].coordinates[2]);
-
+            coords[0],
+            coords[1],
+            coords[2]);
+        sphere.name = cuda[p].name;
+        sphere.image = cuda[p].image;
+        sphere.description = cuda[p].description;
         poiGroup.add(sphere);
     }
-    scene.add(poiGroup);
+    globe.add(poiGroup);
 
 
     //Raycaster
@@ -200,7 +203,7 @@ async function init() {
         const intersects = raycaster.intersectObjects(scene.children, true);
         console.log(intersects[0].point);
         if (intersects.length > 0) {
-            //targetObject = intersects[0].object;
+            targetObject = intersects[0].object;
             console.log('Clicked on object:', targetObject);
         }
     })
@@ -230,9 +233,9 @@ async function init() {
         uniforms.time = { value: time }
         if (!recentlyInteracted) {
             if (rotationSpeed < 0.001) {
-                //rotationSpeed += 0.0000001;
+                rotationSpeed += 0.0000001;
             }
-            globe.rotation.y = 0;
+            globe.rotation.y += rotationSpeed;
         }
 
         if (targetObject) {

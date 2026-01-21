@@ -2,6 +2,7 @@
     "7c": [
         {
             "name": "Piramida Cheopsa",
+            "image": "",
             "description": "Description for Point of Interest 1",
             "coordinates": [
                 -0.7531,
@@ -11,6 +12,7 @@
         },
         {
             "name": "Wiszące Ogrody Babilonu",
+            "image": "",
             "description": "Description for Point of Interest 2",
             "coordinates": [
                 -0.5982,
@@ -20,6 +22,7 @@
         },
         {
             "name": "Świątynia Artemidy w Efezie",
+            "image": "",
             "description": "Description for Point of Interest 2",
             "coordinates": [
                 -0.6991,
@@ -29,6 +32,7 @@
         },
         {
             "name": "Posąg Zeusa w Olimpii",
+            "image": "",
             "description": "Description for Point of Interest 2",
             "coordinates": [
                 -0.7338,
@@ -38,6 +42,7 @@
         },
         {
             "name": "Mauzoleum w Halikarnasie",
+            "image": "",
             "description": "Description for Point of Interest 2",
             "coordinates": [
                 -0.7091,
@@ -47,6 +52,7 @@
         },
         {
             "name": "Latarnia morska na Faros",
+            "image": "",
             "description": "Description for Point of Interest 2",
             "coordinates": [
                 -0.7222,
@@ -56,11 +62,22 @@
         },
         {
             "name": "Kolos Rodyjski",
+            "image": "",
             "description": "Description for Point of Interest 2",
             "coordinates": [
                 -0.7102,
                 0.5927,
                 0.3796
+            ]
+        },
+        {
+            "name": "",
+            "image": "",
+            "description": "",
+            "coordinates": [
+                0,
+                0,
+                0
             ]
         }
     ]
