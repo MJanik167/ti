@@ -2,7 +2,7 @@ import * as THREE from 'https://unpkg.com/three@0.126.1/build/three.module.js';
 
 export default function getStarfield({ numStars = 500, sprite } = {}) {
     function randomSpherePoint() {
-        const radius = Math.random() * 25 + 25;
+        const radius = Math.random() * 50 + 50;
         const u = Math.random();
         const v = Math.random();
         const theta = 2 * Math.PI * u;

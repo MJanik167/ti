@@ -1,5 +1,6 @@
 import * as THREE from 'https://unpkg.com/three@0.126.1/build/three.module.js';
 import { OrbitControls } from 'https://unpkg.com/three@0.126.1/examples/jsm/controls/OrbitControls.js';
+import { Tween, Easing } from 'https://unpkg.com/@tweenjs/tween.js@23.1.3/dist/tween.esm.js'
 import getStarfield from "./stars.js";
 
 // Scene
@@ -45,7 +46,7 @@ async function init() {
 
     const scene = new THREE.Scene()
     const camera = new THREE.PerspectiveCamera(45, sizes.width / sizes.height)
-    camera.position.set(0, 0, 5)
+    camera.position.set(0, 0, 100)
     const renderer = new THREE.WebGLRenderer({
         canvas: canvas,
         antialias: true
@@ -53,7 +54,7 @@ async function init() {
     let rect = renderer.domElement.getBoundingClientRect();
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
-    controls.maxDistance = 10;
+    controls.maxDistance = 100;
     controls.minDistance = 1.5;
     controls.enablePan = false;
     controls.update()
@@ -261,15 +262,27 @@ async function init() {
 
 
     let time = 0;
-    let rotationSpeed = 0.0000;
-    function animate() {
+    let rotationSpeed = 0.001;
 
+    const cameraTween = new Tween(camera.position, false) // Create a new tween that modifies 'coords'.
+        .to({ x: 0, y: 0, z: 5 }, 10000) // Move to (300, 200) in 1 second.
+        .easing(Easing.Quadratic.InOut) // Use an easing function to make the animation smooth.
+        .onUpdate(() => {
+            console.log("aa");
+
+            camera.lookAt(globe.position);
+        })
+        .start() // Start the tween immediately.
+        .onComplete(() => {
+            controls.maxDistance = 10
+        }
+        );
+
+    function animate(time) {
+        cameraTween.update(time);
         time += 0.01;
         //uniforms.time = { value: time }
         if (!recentlyInteracted) {
-            if (rotationSpeed < 0.001) {
-                rotationSpeed += 0.0000001;
-            }
             globe.rotation.y += rotationSpeed;
         }
 
@@ -287,7 +300,7 @@ async function init() {
         requestAnimationFrame(animate)
     }
 
-    animate()
+    requestAnimationFrame(animate)
 
 
 }
