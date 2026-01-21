@@ -54,7 +54,7 @@ async function init() {
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
     controls.maxDistance = 10;
-    controls.minDistance = 1.2;
+    controls.minDistance = 1.5;
     controls.enablePan = false;
     controls.update()
 
@@ -118,7 +118,7 @@ async function init() {
             float alpha=0.0;
             if (alphaChannel == 1.0){
                 alpha = 1.0 - texture2D( alphaMap, vUv ).r ;
-                if(vUv.y*10. > time) discard;
+                //if(vUv.y*10. > time) discard;
             }
             if (alphaChannel == 0.0){
                alpha = texture2D( alphaMap, vUv ).r ;
@@ -175,7 +175,6 @@ async function init() {
     let cuda = data["7c"];
     for (let p in cuda) {
         console.log(cuda[p].coordinates);
-
         let geometry = new THREE.SphereGeometry(0.005, 16, 16);
         let material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
         let sphere = new THREE.Mesh(geometry, material);
@@ -195,8 +194,13 @@ async function init() {
     //Raycaster
     const raycaster = new THREE.Raycaster();
     const mouse = new THREE.Vector2();
-    let targetObject;
+    let infoBox;
+    let targetObject = document.createElement('div');;
     window.addEventListener('click', (event) => {
+        if (window.document.body.contains(infoBox)) {
+            window.document.body.removeChild(infoBox);
+            console.log("removed");
+        }
         mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
         mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
         raycaster.setFromCamera(mouse, camera);
@@ -205,9 +209,40 @@ async function init() {
         if (intersects.length > 0) {
             targetObject = intersects[0].object;
             console.log('Clicked on object:', targetObject);
+            console.log(targetObject.position);
+
+            if (targetObject.name) {
+                infoBox = document.createElement('div');
+                infoBox.classList.add('infoBox');
+                infoBox.style.top = (event.clientY - 250) + 'px';
+                infoBox.style.left = (event.clientX + 30) + 'px';
+                window.document.body.appendChild(infoBox);
+                infoBox.innerHTML = `
+                <div class="textContainer"> 
+                    <h2>${targetObject.name}</h2><p>${targetObject.description}</p>
+                </div>
+                 <div class="imageContainer">
+                    <img src="${targetObject.image}" alt="${targetObject.name}" />
+                </div>
+                `;
+                infoBox.style.display = 'block';
+            }
         }
     })
 
+    window.addEventListener('wheel', (event) => {
+        if (window.document.body.contains(infoBox)) {
+            window.document.body.removeChild(infoBox);
+            console.log("removed");
+        }
+    });
+    window.addEventListener('contextmenu', (event) => {
+        event.preventDefault();
+        if (window.document.body.contains(infoBox)) {
+            window.document.body.removeChild(infoBox);
+            console.log("removed");
+        }
+    });
 
     targetObject = poiGroup.children[1];
     const drag = (event) => {
@@ -230,7 +265,7 @@ async function init() {
     function animate() {
 
         time += 0.01;
-        uniforms.time = { value: time }
+        //uniforms.time = { value: time }
         if (!recentlyInteracted) {
             if (rotationSpeed < 0.001) {
                 rotationSpeed += 0.0000001;

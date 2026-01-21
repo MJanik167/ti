@@ -42,7 +42,7 @@
         },
         {
             "name": "Mauzoleum w Halikarnasie",
-            "image": "",
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHXPruL3Tn93eaM6ooRxZc4S2bsBr4vNPyfg&s",
             "description": "Description for Point of Interest 2",
             "coordinates": [
                 -0.7091,
@@ -52,7 +52,7 @@
         },
         {
             "name": "Latarnia morska na Faros",
-            "image": "",
+            "image": "https://images.immediate.co.uk/production/volatile/sites/63/2024/08/latarnia-morska-na-faros-jeden-z-siedmiu-cudow-swiata-starozytnego-fot-the-print-collector-getty-images-e010a5b.jpg?quality=90&resize=980,654",
             "description": "Description for Point of Interest 2",
             "coordinates": [
                 -0.7222,
@@ -78,6 +78,18 @@
                 0,
                 0,
                 0
+            ]
+        }
+    ],
+    "stolice": [
+        {
+            "name": "",
+            "image": "",
+            "description": "",
+            "coordinates": [
+                -0.1729,
+                0.6274,
+                -0.7591
             ]
         }
     ]
