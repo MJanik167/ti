@@ -42,7 +42,7 @@
         },
         {
             "name": "Mauzoleum w Halikarnasie",
-            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHXPruL3Tn93eaM6ooRxZc4S2bsBr4vNPyfg&s",
+            "image": "",
             "description": "Description for Point of Interest 2",
             "coordinates": [
                 -0.7091,
@@ -52,7 +52,7 @@
         },
         {
             "name": "Latarnia morska na Faros",
-            "image": "https://images.immediate.co.uk/production/volatile/sites/63/2024/08/latarnia-morska-na-faros-jeden-z-siedmiu-cudow-swiata-starozytnego-fot-the-print-collector-getty-images-e010a5b.jpg?quality=90&resize=980,654",
+            "image": "",
             "description": "Description for Point of Interest 2",
             "coordinates": [
                 -0.7222,
@@ -81,16 +81,421 @@
             ]
         }
     ],
-    "stolice": [
+
+    "kz": [ 
         {
-            "name": "",
+            "name": "Mount Everest",
             "image": "",
-            "description": "",
+            "description": "Wysokość: 8,848 m n.p.m.",
             "coordinates": [
-                -0.1729,
-                0.6274,
-                -0.7591
+                -0.0456,
+                0.4697,
+                0.8815
+            ]
+        },
+
+        {
+            "name": "K2",
+            "image": "",
+            "description": "Wysokość: 8,611 m n.p.m.",
+            "coordinates": [
+                0.0751,
+                0.6060,
+                0.7918
+            ]
+        },
+
+        {
+            "name": "Aconcagua",
+            "image": "",
+            "description": "Wysokość: 6,959 m n.p.m.",
+            "coordinates": [
+                -0.5492,
+                -0.5225,
+                -0.6521
+            ]
+        },
+
+        {
+            "name": "McKinley (Denali)",
+            "image": "",
+            "description": "Wysokość: 6,190 m n.p.m.",
+            "coordinates": [
+                0.2072,
+                0.8927,
+                -0.3999
+            ]
+        },
+
+        {
+            "name": "Kilimandżaro",
+            "image": "",
+            "description": "Wysokość: 5,895 m n.p.m.",
+            "coordinates": [
+                -0.3279,
+                -0.0495,
+                0.9434
+            ]
+        },
+
+        {
+            "name": "Mont Blanc",
+            "image": "",
+            "description": "Wysokość: 4,808 m n.p.m.",
+            "coordinates": [
+                -0.5275,
+                0.7202,
+                0.4504
+            ]
+        },
+
+        {
+            "name": "Puncak Jaya",
+            "image": "",
+            "description": "Wysokość: 4,884 m n.p.m.",
+            "coordinates": [
+                0.9841,
+                -0.0671,
+                0.1639
+            ]
+        },
+
+        {
+            "name": "Masyw Vinsona",
+            "image": "",
+            "description": "Wysokość: 4,892 m n.p.m.",
+            "coordinates": [
+                -0.1203,
+                -0.9796,
+                -0.1603
             ]
         }
+    ],
+
+    "10miast_afryki": [
+        {
+            "name": "Kair",
+            "image": "",
+            "description": "Stolica Egiptu i największe miasto Afryki.",
+            "coordinates": [
+                -0.3709,
+                0.4992,
+                0.7830
+            ]
+        },
+
+        {
+            "name": "Kinszasa",
+            "image": "",
+            "description": "Drugie najwieksze miasto Afryki i stolica Demokratycznej Republiki Konga.",
+            "coordinates": [
+                -0.6255,
+                -0.0867,
+                0.7753
+            ]
+        },
+
+        {
+            "name": "Lagos",
+            "image": "",
+            "description": "Trzecie najwieksze miasto Afryki i największe miasto Nigerii.",
+            "coordinates": [
+                -0.7929,
+                0.1169,
+                0.5978
+            ]
+        },
+
+        {
+            "name": "Ibadan",
+            "image": "",
+            "description": "Czwarte najwieksze miasto Afryki i drugie największe miasto Nigerii.",
+            "coordinates": [
+                -0.7903,
+                0.1404,
+                0.5963
+            ]
+        },
+
+        {
+            "name": "Johannesburg",
+            "image": "",
+            "description": "Piąte najwieksze miasto Afryki i największe miasto Republiki Południowej Afryki.",
+            "coordinates": [
+                -0.4346,
+                -0.4446,
+                0.7831
+            ]
+        },
+
+        {
+            "name": "Luanda",
+            "image": "",
+            "description": "Szóste najwieksze miasto Afryki i stolica Angoli.",
+            "coordinates": [
+                -0.6766,
+                -0.1553,
+                0.7197
+            ]
+        },
+
+        {
+            "name": "Abidżan",
+            "image": "",
+            "description": "Siódme najwieksze miasto Afryki i największe miasto Wybrzeża Kości Słoniowej.",
+            "coordinates": [
+                -0.8622,
+                0.0939,
+                0.4977
+            ]
+        },
+
+        {
+            "name": "Nairobi",
+            "image": "",
+            "description": "Ósme najwieksze miasto Afryki i stolica Kenii.",
+            "coordinates": [
+                -0.3227,
+                -0.0206,
+                0.9462
+            ]
+        },
+
+        {
+            "name": "Aleksandria",
+            "image": "",
+            "description": "Dziewiąte najwieksze miasto Afryki i drugie największe miasto Egiptu.",
+            "coordinates": [
+                -0.3803,
+                0.5180,
+                0.7660
+            ]
+        },
+
+        {
+            "name": "Dar es Salaam",
+            "image": "",
+            "description": "Dziesiąte najwieksze miasto Afryki i największe miasto Tanzanii.",
+            "coordinates": [
+                -0.2959,
+                -0.1163,
+                0.9481
+            ]
+        }    
+    
+    ],
+
+    "2ws_bitwy": [
+        {
+            "name": "Bitwa o Stalingrad",
+            "image": "",
+            "description": "Jedna z najważniejszych bitew II wojny światowej, która miała miejsce w latach 1942-1943.",
+            "coordinates": [
+                -0.1551,
+                0.7533,
+                0.6390
+            ]
+        },
+        {
+            "name": "Bitwa o Normandię",
+            "image": "",
+            "description": "Inwazja aliantów na okupowaną przez Niemcy Francję w czerwcu 1944 roku.",
+            "coordinates": [
+                -0.5481,
+                 0.7580,
+                 0.3534
+            ]
+        },
+        {
+            "name": "Bitwa o Midway",
+            "image": "",
+            "description": "Decydująca bitwa morska na Pacyfiku w czerwcu 1942 roku.",
+            "coordinates": [
+                0.6913,
+                0.4875,
+                -0.5332
+            ]
+        },
+        {
+            "name": "Bitwa o El Alamein",
+            "image": "",
+            "description": "Kluczowa bitwa na froncie afrykańskim w październiku 1942 roku.",
+            "coordinates": [
+                -0.4044,
+                0.5150,
+                0.7557
+            ]
+        },
+        {
+            "name": "Bitwa o Kursk",
+            "image": "",
+            "description": "Największa bitwa pancerna w historii, która miała miejsce w lipcu 1943 roku.",
+            "coordinates": [
+                -0.2230,
+                0.7760,
+                0.5899
+            ]
+        },
+        {
+            "name": "Bitwa o Pearl Harbor",
+            "image": "",
+            "description": "Atak japoński na amerykańską bazę morską w grudniu 1941 roku.",
+            "coordinates": [
+                0.5291,
+                0.3680,
+                -0.7645
+            ]
+        }
+    ],
+
+    "turystyczne": [
+        {
+            "name": "Wieża Eiffla",
+            "image": "",
+            "description": "Ikoniczna wieża wybudowana w roku .",
+            "coordinates": [
+                -0.6580,
+                0.7523,
+                0.0311
+            ]
+        },
+        {
+            "name": "Wielki Mur Chiński",
+            "image": "",
+            "description": "Rozległa fortyfikacja ciągnąca się przez tysiące kilometrów w Chinach.",
+            "coordinates": [
+                0.3208,
+                0.6497,
+                0.6891
+            ]
+        },
+        {
+            "name": "Tadź Mahal",
+            "image": "",
+            "description": "Mauzoleum z białego marmuru w Indiach, zbudowane przez cesarza Szahdżahana.",
+            "coordinates": [
+                -0.1971,
+                0.4473,
+                0.8723
+            ]
+        },
+        {
+            "name": "Statua Wolności",
+            "image": "",
+            "description": "Symbol wolności i demokracji w Nowym Jorku, USA.",
+            "coordinates": [
+                -0.2084,
+                0.6534,
+                -0.7276
+            ]
+        },
+        {
+            "name": "Machu Picchu",
+            "image": "",
+            "description": "Starożytne miasto Inków położone wysoko w Andach w Peru.",
+            "coordinates": [
+                -0.2877,
+                 -0.2160,
+                -0.9330
+            ]
+        },
+        {
+            "name": "Koloseum",
+            "image": "",
+            "description": "Starożytny amfiteatr w Rzymie, Włochy.",
+            "coordinates": [
+                -0.7254,
+                0.6700,
+                0.1572
+            ]
+        },
+        {
+            "name": "Petra",
+            "image": "",
+            "description": "Starożytne miasto wykute w skałach w Jordanii.",
+            "coordinates": [
+                -0.7069,
+                0.5041,
+                0.4960
+            ]
+        },
+        {
+            "name": "Sydney Opera House",
+            "image": "",
+            "description": "Ikoniczny budynek opery w Sydney, Australia.",
+            "coordinates": [
+                0.7233,
+                -0.5595,
+                0.4046
+            ]
+        },
+        {
+            "name": "Angkor Wat",
+            "image": "",
+            "description": "Największy kompleks świątynny na świecie, położony w Kambodży.",
+            "coordinates": [
+                0.2309,
+                0.2369,
+                0.9436
+            ]
+        },
+        {
+            "name": "Wodospad Niagara",
+            "image": "",
+            "description": "Słynny wodospad na granicy USA i Kanady.",
+            "coordinates": [
+                -0.1406,
+                0.6821,
+                -0.7175
+            ]
+        },
+        {
+            "name": "Burj Khalifa",
+            "image": "",
+            "description": "Najwyższy budynek na świecie, zlokalizowany w Dubaju, Zjednoczone Emiraty Arabskie.",
+            "coordinates": [
+                -0.5139,
+                0.4279,
+                 0.7434
+            ]
+        },
+        {
+            "name": "Santorini",
+            "image": "",
+            "description": "Malownicza wyspa w Grecji, znana z białych budynków i niebieskich kopułek.",
+            "coordinates": [
+                -0.7237,
+                0.5978,
+                0.3447
+            ]
+        },
+        {
+            "name": "Wielki Kanion",
+            "image": "",
+            "description": "Imponujący kanion w stanie Arizona, USA.",
+            "coordinates": [
+                0.2976,
+                0.5910,
+                -0.7496
+            ]
+        },
+        {
+            "name": "Chichen Itza",
+            "image": "",
+            "description": "Starożytne miasto Majów w Meksyku, znane z piramidy Kukulkana.",
+            "coordinates": [
+                -0.0168,
+                 0.3538,
+                -0.9351
+            ]
+        }
+    ],
+
+    "cuda_natury": [
+
+    ],
+
+    "najwieksze_akwaria": [
+        
     ]
 }
