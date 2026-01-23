@@ -1,3 +1,4 @@
+ 
 {
     "7c": [
         {
@@ -81,7 +82,6 @@
             ]
         }
     ],
-
     "kz": [ 
         {
             "name": "Mount Everest",
@@ -93,85 +93,77 @@
                 0.8815
             ]
         },
-
         {
             "name": "K2",
             "image": "",
             "description": "Wysokość: 8,611 m n.p.m.",
             "coordinates": [
-                0.0751,
-                0.6060,
-                0.7918
+                -0.2025,
+                0.5907,
+                0.7848
             ]
         },
-
         {
             "name": "Aconcagua",
             "image": "",
             "description": "Wysokość: 6,959 m n.p.m.",
             "coordinates": [
-                -0.5492,
-                -0.5225,
-                -0.6521
+                -0.2814,
+                -0.5437,
+                -0.7964
             ]
         },
-
         {
             "name": "McKinley (Denali)",
             "image": "",
             "description": "Wysokość: 6,190 m n.p.m.",
             "coordinates": [
-                0.2072,
-                0.8927,
-                -0.3999
+                0.3978,
+                0.8913,
+                -0.2172
             ]
         },
-
         {
             "name": "Kilimandżaro",
             "image": "",
             "description": "Wysokość: 5,895 m n.p.m.",
             "coordinates": [
-                -0.3279,
-                -0.0495,
-                0.9434
+                -0.7941,
+                -0.0560,
+                0.6080
             ]
         },
-
         {
             "name": "Mont Blanc",
             "image": "",
             "description": "Wysokość: 4,808 m n.p.m.",
             "coordinates": [
-                -0.5275,
-                0.7202,
-                0.4504
+                -0.6923,
+                -0.7163,
+                0.0864
             ]
         },
-
         {
             "name": "Puncak Jaya",
             "image": "",
             "description": "Wysokość: 4,884 m n.p.m.",
             "coordinates": [
-                0.9841,
-                -0.0671,
-                0.1639
+                0.7395,
+                -0.0738,
+                0.6690
             ]
         },
-
         {
             "name": "Masyw Vinsona",
             "image": "",
             "description": "Wysokość: 4,892 m n.p.m.",
             "coordinates": [
-                -0.1203,
-                -0.9796,
-                -0.1603
+                -0.0112,
+                -0.9863,
+                -0.1922
             ]
         }
     ],
-
     "10miast_afryki": [
         {
             "name": "Kair",
@@ -183,7 +175,6 @@
                 0.7830
             ]
         },
-
         {
             "name": "Kinszasa",
             "image": "",
@@ -194,7 +185,6 @@
                 0.7753
             ]
         },
-
         {
             "name": "Lagos",
             "image": "",
@@ -205,7 +195,6 @@
                 0.5978
             ]
         },
-
         {
             "name": "Ibadan",
             "image": "",
@@ -216,7 +205,6 @@
                 0.5963
             ]
         },
-
         {
             "name": "Johannesburg",
             "image": "",
@@ -227,7 +215,6 @@
                 0.7831
             ]
         },
-
         {
             "name": "Luanda",
             "image": "",
@@ -238,7 +225,6 @@
                 0.7197
             ]
         },
-
         {
             "name": "Abidżan",
             "image": "",
@@ -249,7 +235,6 @@
                 0.4977
             ]
         },
-
         {
             "name": "Nairobi",
             "image": "",
@@ -260,7 +245,6 @@
                 0.9462
             ]
         },
-
         {
             "name": "Aleksandria",
             "image": "",
@@ -271,7 +255,6 @@
                 0.7660
             ]
         },
-
         {
             "name": "Dar es Salaam",
             "image": "",
@@ -282,9 +265,7 @@
                 0.9481
             ]
         }    
-    
     ],
-
     "2ws_bitwy": [
         {
             "name": "Bitwa o Stalingrad",
@@ -347,7 +328,6 @@
             ]
         }
     ],
-
     "turystyczne": [
         {
             "name": "Wieża Eiffla",
@@ -490,12 +470,9 @@
             ]
         }
     ],
-
     "cuda_natury": [
-
     ],
-
     "najwieksze_akwaria": [
-        
     ]
 }
+ 
