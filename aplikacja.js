@@ -1,6 +1,7 @@
 import * as THREE from 'https://unpkg.com/three@0.126.1/build/three.module.js';
 import { OrbitControls } from 'https://unpkg.com/three@0.126.1/examples/jsm/controls/OrbitControls.js';
 import { Tween, Easing } from 'https://unpkg.com/@tweenjs/tween.js@23.1.3/dist/tween.esm.js'
+import * as BufferGeometryUtils from 'https://unpkg.com/three@0.126.1/examples/jsm/utils/BufferGeometryUtils.js';
 import getStarfield from "./stars.js";
 
 // Scene
@@ -178,23 +179,48 @@ async function init() {
         }
         let poi = data[name];
 
-        let poi_material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+        let diskMesh = new THREE.MeshBasicMaterial({ color: 0x4c4c4c });
+        let domeMesh = new THREE.MeshBasicMaterial({ color: 0x00bfc9 });
+        let lightMesh = new THREE.MeshStandardMaterial({
+            color: 0x00ff00,       // kolor podstawowy (zielony)
+            transparent: true,     // włącz przezroczystość
+            opacity: 0.5,          // 0 = całkowicie przezroczysty, 1 = pełny kolor
+            emissive: 0x00ff00,    // kolor świecącej części
+            emissiveIntensity: 0.8 // siła świecenia
+        });
         //let geometry = [new THREE.SphereGeometry(0.005, 16, 16)];
-        let geometry = [new THREE.CylinderGeometry(3, 3, 0.6, 32), new THREE.SphereGeometry(1.2, 32, 16)];
-        geometry = THREE.BufferGeometryUtils.mergeBufferGeometries(geometry);
+        let diskGeometry = new THREE.CylinderGeometry(0.015, 0.015, 0.002, 16)
+        let domeGeometry = new THREE.SphereGeometry(0.006, 32, 16);
+        let lightGeometry = new THREE.CylinderGeometry(0.004, 0.02, 0.1, 16)
+        let outlineMaterial = new THREE.MeshBasicMaterial({
+            color: 0x000000,  // kolor obrysu
+            side: THREE.BackSide // renderujemy od tyłu
+        });
         for (let p in poi) {
             console.log(poi[p].coordinates);
 
-            let sphere = new THREE.Mesh(geometry, poi_material);
+            let light = new THREE.Mesh(lightGeometry, lightMesh);
+            light.position.set(0, -0.05, 0);
+            let disk = new THREE.Mesh(diskGeometry, diskMesh);
+            let dome = new THREE.Mesh(domeGeometry, domeMesh);
+            let outlineMesh = new THREE.Mesh(diskGeometry, outlineMaterial);
+            outlineMesh.scale.multiplyScalar(1.05); // minimalnie większy
+            let ufo = new THREE.Group();
+            ufo.add(disk);
+            ufo.add(dome);
+            ufo.add(light);
+            disk.add(outlineMesh);
             let coords = poi[p].coordinates.map(x => x * 1.1);
-            sphere.position.set(
+            ufo.position.set(
                 coords[0],
                 coords[1],
                 coords[2]);
-            sphere.name = poi[p].name;
-            sphere.image = poi[p].image;
-            sphere.description = poi[p].description;
-            poiGroup.add(sphere);
+            ufo.lookAt(new THREE.Vector3(0, 0, 0));
+            ufo.rotateX(-Math.PI / 2);
+            ufo.name = poi[p].name;
+            ufo.image = poi[p].image;
+            ufo.description = poi[p].description;
+            poiGroup.add(ufo);
         }
         globe.add(poiGroup);
     };
@@ -212,13 +238,14 @@ async function init() {
         mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
         raycaster.setFromCamera(mouse, camera);
         const intersects = raycaster.intersectObjects(poiGroup.children, true);
-        console.log(intersects[0].point);
+        //console.log(intersects[0].point);
         if (intersects.length > 0) {
             targetObject = intersects[0].object;
-            console.log('Clicked on object:', targetObject);
+            console.log('Clicked on object:', targetObject.parent);
             console.log(targetObject.position);
 
-            if (targetObject.name) {
+            if (targetObject.parent.name) {
+                let element = targetObject.parent;
                 infoBox = document.createElement('div');
                 infoBox.classList.add('infoBox');
                 infoBox.style.top = (event.clientY - 250) + 'px';
@@ -226,10 +253,10 @@ async function init() {
                 window.document.body.appendChild(infoBox);
                 infoBox.innerHTML = `
                 <div class="textContainer"> 
-                    <h2>${targetObject.name}</h2><p>${targetObject.description}</p>
+                    <h2>${element.name}</h2><p>${element.description}</p>
                 </div>
                  <div class="imageContainer">
-                    <img src="${targetObject.image}" alt="${targetObject.name}" />
+                    <img src="${element.image}" alt="${element.name}" />
                 </div>
                 `;
                 infoBox.style.display = 'block';
@@ -269,7 +296,7 @@ async function init() {
     let time = 0;
     let rotationSpeed = 0.001;
 
-    addPoints("kz")
+    addPoints("7c")
 
     const cameraTween = new Tween(camera.position, false) // Create a new tween that modifies 'coords'.
         .to({ x: 0, y: 0, z: 5 }, 3000) // Move to (300, 200) in 1 second.
