@@ -296,7 +296,7 @@ async function init() {
     let time = 0;
     let rotationSpeed = 0.001;
 
-    addPoints("7c")
+    addPoints("10miast_afryki")
 
     const cameraTween = new Tween(camera.position, false) // Create a new tween that modifies 'coords'.
         .to({ x: 0, y: 0, z: 5 }, 3000) // Move to (300, 200) in 1 second.
