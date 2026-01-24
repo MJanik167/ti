@@ -1,4 +1,3 @@
- 
 {
     "7c": [
         {
@@ -82,7 +81,7 @@
             ]
         }
     ],
-    "kz": [ 
+    "kz": [
         {
             "name": "Mount Everest",
             "image": "",
@@ -139,7 +138,7 @@
             "description": "Wysokość: 4,808 m n.p.m.",
             "coordinates": [
                 -0.6923,
-                -0.7163,
+                0.7163,
                 0.0864
             ]
         },
@@ -264,7 +263,7 @@
                 -0.1163,
                 0.9481
             ]
-        }    
+        }
     ],
     "2ws_bitwy": [
         {
@@ -283,8 +282,8 @@
             "description": "Inwazja aliantów na okupowaną przez Niemcy Francję w czerwcu 1944 roku.",
             "coordinates": [
                 -0.5481,
-                 0.7580,
-                 0.3534
+                0.7580,
+                0.3534
             ]
         },
         {
@@ -375,7 +374,7 @@
             "description": "Starożytne miasto Inków położone wysoko w Andach w Peru.",
             "coordinates": [
                 -0.2877,
-                 -0.2160,
+                -0.2160,
                 -0.9330
             ]
         },
@@ -436,7 +435,7 @@
             "coordinates": [
                 -0.5139,
                 0.4279,
-                 0.7434
+                0.7434
             ]
         },
         {
@@ -465,14 +464,11 @@
             "description": "Starożytne miasto Majów w Meksyku, znane z piramidy Kukulkana.",
             "coordinates": [
                 -0.0168,
-                 0.3538,
+                0.3538,
                 -0.9351
             ]
         }
     ],
-    "cuda_natury": [
-    ],
-    "najwieksze_akwaria": [
-    ]
+    "cuda_natury": [],
+    "najwieksze_akwaria": []
 }
- 

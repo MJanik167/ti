@@ -20,8 +20,6 @@ async function loadJSON() {
 async function init() {
 
     let data = await loadJSON();
-    console.log(data);
-
 
 
     const canvas = document.querySelector('canvas.scene')
@@ -68,7 +66,7 @@ async function init() {
 
     const textureLoader = new THREE.TextureLoader()
     const colorMap = textureLoader.load("8081_earthmap10k.jpg")
-    const nightMap = textureLoader.load("8081_earthlights10k.jpg")
+    //const nightMap = textureLoader.load("8081_earthlights10k.jpg")
     const alphaMap = textureLoader.load("8081_earthspec10k.jpg")
     const elevMap = textureLoader.load("8081_earthbump10k.jpg")
 
@@ -76,7 +74,8 @@ async function init() {
     const stars = getStarfield({ numStars: 1000 })
     scene.add(stars)
 
-    const detail = 300;
+    const detail = 90;
+
     const pointsGeo = new THREE.IcosahedronGeometry(1, detail);
     const vertexShader = `
         uniform float size;
@@ -173,24 +172,32 @@ async function init() {
 
     //points
     const poiGroup = new THREE.Group();
-    let cuda = data["7c"];
-    for (let p in cuda) {
-        console.log(cuda[p].coordinates);
-        let geometry = new THREE.SphereGeometry(0.005, 16, 16);
-        let material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
-        let sphere = new THREE.Mesh(geometry, material);
-        let coords = cuda[p].coordinates.map(x => x * 1.015);
-        sphere.position.set(
-            coords[0],
-            coords[1],
-            coords[2]);
-        sphere.name = cuda[p].name;
-        sphere.image = cuda[p].image;
-        sphere.description = cuda[p].description;
-        poiGroup.add(sphere);
-    }
-    globe.add(poiGroup);
+    const addPoints = (name) => {
+        if (poiGroup.children.length > 0) {
+            poiGroup.clear();
+        }
+        let poi = data[name];
 
+        let poi_material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+        //let geometry = [new THREE.SphereGeometry(0.005, 16, 16)];
+        let geometry = [new THREE.CylinderGeometry(3, 3, 0.6, 32), new THREE.SphereGeometry(1.2, 32, 16)];
+        geometry = THREE.BufferGeometryUtils.mergeBufferGeometries(geometry);
+        for (let p in poi) {
+            console.log(poi[p].coordinates);
+
+            let sphere = new THREE.Mesh(geometry, poi_material);
+            let coords = poi[p].coordinates.map(x => x * 1.1);
+            sphere.position.set(
+                coords[0],
+                coords[1],
+                coords[2]);
+            sphere.name = poi[p].name;
+            sphere.image = poi[p].image;
+            sphere.description = poi[p].description;
+            poiGroup.add(sphere);
+        }
+        globe.add(poiGroup);
+    };
 
     //Raycaster
     const raycaster = new THREE.Raycaster();
@@ -200,12 +207,11 @@ async function init() {
     window.addEventListener('click', (event) => {
         if (window.document.body.contains(infoBox)) {
             window.document.body.removeChild(infoBox);
-            console.log("removed");
         }
         mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
         mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
         raycaster.setFromCamera(mouse, camera);
-        const intersects = raycaster.intersectObjects(scene.children, true);
+        const intersects = raycaster.intersectObjects(poiGroup.children, true);
         console.log(intersects[0].point);
         if (intersects.length > 0) {
             targetObject = intersects[0].object;
@@ -252,7 +258,6 @@ async function init() {
         raycaster.setFromCamera(mouse, camera);
         const intersects = raycaster.intersectObjects(scene.children, true);
         console.log(targetObject.position);
-
         if (intersects.length > 1) {
             let norm = intersects[0].point.normalize();
             targetObject.position.set(norm.x, norm.y, norm.z);
@@ -264,12 +269,12 @@ async function init() {
     let time = 0;
     let rotationSpeed = 0.001;
 
+    addPoints("kz")
+
     const cameraTween = new Tween(camera.position, false) // Create a new tween that modifies 'coords'.
-        .to({ x: 0, y: 0, z: 5 }, 10000) // Move to (300, 200) in 1 second.
+        .to({ x: 0, y: 0, z: 5 }, 3000) // Move to (300, 200) in 1 second.
         .easing(Easing.Quadratic.InOut) // Use an easing function to make the animation smooth.
         .onUpdate(() => {
-            console.log("aa");
-
             camera.lookAt(globe.position);
         })
         .start() // Start the tween immediately.
