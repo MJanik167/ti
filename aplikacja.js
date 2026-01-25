@@ -196,6 +196,7 @@ async function init() {
             color: 0x000000,  // kolor obrysu
             side: THREE.BackSide // renderujemy od tyłu
         });
+        let innerOutline = new THREE.CylinderGeometry(0.016,0.016,0.006,16)
         for (let p in poi) {
             console.log(poi[p].coordinates);
 
@@ -203,13 +204,18 @@ async function init() {
             light.position.set(0, -0.05, 0);
             let disk = new THREE.Mesh(diskGeometry, diskMesh);
             let dome = new THREE.Mesh(domeGeometry, domeMesh);
-            let outlineMesh = new THREE.Mesh(diskGeometry, outlineMaterial);
-            outlineMesh.scale.multiplyScalar(1.05); // minimalnie większy
+            let outlineMeshOuter = new THREE.Mesh(diskGeometry, outlineMaterial);
+            outlineMeshOuter.scale.multiplyScalar(1.1); 
+            let outlineMeshInner = new THREE.Mesh(innerOutline, outlineMaterial);
+            outlineMeshInner.scale.multiplyScalar(1.1); 
+            
+
             let ufo = new THREE.Group();
             ufo.add(disk);
             ufo.add(dome);
             ufo.add(light);
-            disk.add(outlineMesh);
+            disk.add(outlineMeshOuter);
+           // disk.add(outlineMeshInner);
             let coords = poi[p].coordinates.map(x => x * 1.1);
             ufo.position.set(
                 coords[0],
@@ -296,7 +302,7 @@ async function init() {
     let time = 0;
     let rotationSpeed = 0.001;
 
-    addPoints("10miast_afryki")
+    addPoints("kz")
 
     const cameraTween = new Tween(camera.position, false) // Create a new tween that modifies 'coords'.
         .to({ x: 0, y: 0, z: 5 }, 3000) // Move to (300, 200) in 1 second.
