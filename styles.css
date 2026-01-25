@@ -74,7 +74,7 @@ span {
     margin: 10vw;
     margin-top: 5vh;
     overflow: auto;
-    
+
 }
 
 #program:fullscreen {
@@ -280,14 +280,14 @@ span {
     cursor: pointer;
     transform: skew(-21deg);
     margin: 2%;
-  }
-  
-  span {
+}
+
+span {
     display: inline-block;
     transform: skew(21deg);
-  }
-  
-  .pointOption::before {
+}
+
+.pointOption::before {
     content: '';
     position: absolute;
     top: 0;
@@ -298,14 +298,51 @@ span {
     opacity: 0;
     z-index: -1;
     transition: all 0.5s;
-  }
-  
-  .pointOption:hover {
+}
+
+.pointOption:hover {
     color: #b4c7239e;
-  }
-  
-  .pointOption:hover::before {
+}
+
+.pointOption:hover::before {
     left: 0;
     right: 0;
     opacity: 1;
-  }
+}
+
+
+.infoBox {
+    position: absolute;
+    animation: fadeIn 2000ms ease forwards;
+    width: 300px;
+    height: 300px;
+    padding: 10px;
+    border-radius: 5px;
+    max-width: 300px;
+    font-family: Arial, sans-serif;
+}
+
+.imageContainer {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+    border: 1px solid black;
+    background-color: gray;
+    margin-left: 100px;
+}
+
+.imageContainer img {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    background-size: cover;
+    height: auto;
+}
+
+.textContainer {
+    padding: 10px;
+    margin-bottom: 40px;
+    border: 1px solid black;
+    background-color: gray;
+    text-align: left;
+}
