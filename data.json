@@ -4,7 +4,7 @@
         "points": [
             {
                 "name": "Piramida Cheopsa",
-                "image": "",
+                "image": "zdjecia/7c/Great_Pyramid_of_Giza_-_Pyramid_of_Khufu.jpg",
                 "description": "Description for Point of Interest 1",
                 "coordinates": [
                     -0.7531,
@@ -14,7 +14,7 @@
             },
             {
                 "name": "Wiszące Ogrody Babilonu",
-                "image": "",
+                "image": "zdjecia/7c/babilon.jpg",
                 "description": "Description for Point of Interest 2",
                 "coordinates": [
                     -0.5982,
@@ -24,7 +24,7 @@
             },
             {
                 "name": "Świątynia Artemidy w Efezie",
-                "image": "",
+                "image": "zdjecia/7c/artemida.jpg",
                 "description": "Description for Point of Interest 2",
                 "coordinates": [
                     -0.6991,
@@ -34,7 +34,7 @@
             },
             {
                 "name": "Posąg Zeusa w Olimpii",
-                "image": "",
+                "image": "zdjecia/7c/zeus.jpg",
                 "description": "Description for Point of Interest 2",
                 "coordinates": [
                     -0.7338,
@@ -44,7 +44,7 @@
             },
             {
                 "name": "Mauzoleum w Halikarnasie",
-                "image": "",
+                "image": "zdjecia/7c/zeus.jpg",
                 "description": "Description for Point of Interest 2",
                 "coordinates": [
                     -0.7091,
@@ -54,7 +54,7 @@
             },
             {
                 "name": "Latarnia morska na Faros",
-                "image": "",
+                "image": "zdjecia/7c/faros.jpg",
                 "description": "Description for Point of Interest 2",
                 "coordinates": [
                     -0.7222,
@@ -64,7 +64,7 @@
             },
             {
                 "name": "Kolos Rodyjski",
-                "image": "",
+                "image": "zdjecia/7c/kolos.jpg",
                 "description": "Description for Point of Interest 2",
                 "coordinates": [
                     -0.7102,
@@ -89,7 +89,7 @@
         "points": [
             {
                 "name": "Mount Everest",
-                "image": "",
+                "image": "zdjecia/kz/everest.jpg",
                 "description": "Wysokość: 8,848 m n.p.m.",
                 "coordinates": [
                     -0.0456,
@@ -99,7 +99,7 @@
             },
             {
                 "name": "K2",
-                "image": "",
+                "image": "zdjecia/kz/k2.jpg",
                 "description": "Wysokość: 8,611 m n.p.m.",
                 "coordinates": [
                     -0.2025,
@@ -109,7 +109,7 @@
             },
             {
                 "name": "Aconcagua",
-                "image": "",
+                "image": "zdjecia/kz/anc.jpg",
                 "description": "Wysokość: 6,959 m n.p.m.",
                 "coordinates": [
                     -0.2814,
@@ -119,7 +119,7 @@
             },
             {
                 "name": "McKinley (Denali)",
-                "image": "",
+                "image": "zdjecia/kz/denali.jpg",
                 "description": "Wysokość: 6,190 m n.p.m.",
                 "coordinates": [
                     0.3978,
@@ -129,7 +129,7 @@
             },
             {
                 "name": "Kilimandżaro",
-                "image": "",
+                "image": "zdjecia/kz/kili.jpg",
                 "description": "Wysokość: 5,895 m n.p.m.",
                 "coordinates": [
                     -0.7941,
@@ -139,7 +139,7 @@
             },
             {
                 "name": "Mont Blanc",
-                "image": "",
+                "image": "zdjecia/kz/blanc.jpg",
                 "description": "Wysokość: 4,808 m n.p.m.",
                 "coordinates": [
                     -0.6923,
@@ -149,7 +149,7 @@
             },
             {
                 "name": "Puncak Jaya",
-                "image": "",
+                "image": "zdjecia/kz/jaya.jpg",
                 "description": "Wysokość: 4,884 m n.p.m.",
                 "coordinates": [
                     0.7395,
@@ -159,7 +159,7 @@
             },
             {
                 "name": "Masyw Vinsona",
-                "image": "",
+                "image": "zdjecia/kz/vinson.jpg",
                 "description": "Wysokość: 4,892 m n.p.m.",
                 "coordinates": [
                     -0.0112,
@@ -174,7 +174,7 @@
         "points": [
             {
                 "name": "Kair",
-                "image": "",
+                "image": "zdjecia/ma/kair.jpg",
                 "description": "Stolica Egiptu i największe miasto Afryki.",
                 "coordinates": [
                     -0.0905,
@@ -184,7 +184,7 @@
             },
             {
                 "name": "Kinszasa",
-                "image": "",
+                "image": "zdjecia/ma/kins.jpg",
                 "description": "Drugie najwieksze miasto Afryki i stolica Demokratycznej Republiki Konga.",
                 "coordinates": [
                     -0.6255,
@@ -194,7 +194,7 @@
             },
             {
                 "name": "Lagos",
-                "image": "",
+                "image": "zdjecia/ma/lagos.jpg",
                 "description": "Trzecie najwieksze miasto Afryki i największe miasto Nigerii.",
                 "coordinates": [
                     -0.7929,
@@ -204,7 +204,7 @@
             },
             {
                 "name": "Ibadan",
-                "image": "",
+                "image": "zdjecia/ma/ibadan.webp",
                 "description": "Czwarte najwieksze miasto Afryki i drugie największe miasto Nigerii.",
                 "coordinates": [
                     -0.7903,
@@ -214,7 +214,7 @@
             },
             {
                 "name": "Johannesburg",
-                "image": "",
+                "image": "zdjecia/ma/johan.jpg",
                 "description": "Piąte najwieksze miasto Afryki i największe miasto Republiki Południowej Afryki.",
                 "coordinates": [
                     -0.4346,
@@ -224,7 +224,7 @@
             },
             {
                 "name": "Luanda",
-                "image": "",
+                "image": "zdjecia/ma/luanda.jpg",
                 "description": "Szóste najwieksze miasto Afryki i stolica Angoli.",
                 "coordinates": [
                     -0.6766,
@@ -234,7 +234,7 @@
             },
             {
                 "name": "Abidżan",
-                "image": "",
+                "image": "zdjecia/ma/abidzan.jpg",
                 "description": "Siódme najwieksze miasto Afryki i największe miasto Wybrzeża Kości Słoniowej.",
                 "coordinates": [
                     -0.8622,
@@ -244,7 +244,7 @@
             },
             {
                 "name": "Nairobi",
-                "image": "",
+                "image": "zdjecia/ma/nairobi.webp",
                 "description": "Ósme najwieksze miasto Afryki i stolica Kenii.",
                 "coordinates": [
                     -0.3227,
@@ -254,7 +254,7 @@
             },
             {
                 "name": "Aleksandria",
-                "image": "",
+                "image": "zdjecia/ma/alex.jpg",
                 "description": "Dziewiąte najwieksze miasto Afryki i drugie największe miasto Egiptu.",
                 "coordinates": [
                     -0.3803,
@@ -264,7 +264,7 @@
             },
             {
                 "name": "Dar es Salaam",
-                "image": "",
+                "image": "zdjecia/ma/dels.jpg",
                 "description": "Dziesiąte najwieksze miasto Afryki i największe miasto Tanzanii.",
                 "coordinates": [
                     -0.2959,
