@@ -27,13 +27,34 @@ html {
 .icon {
     width: 64px;
     height: 64px;
-    background-color: "#FFFFFF";
+    background-color: #FFFFFF;
     margin: 16px;
     display: inline-block;
     background-image: url(https://assets.techrepublic.com/uploads/2016/11/giphy-5.gif);
     background-size: cover;
     position: absolute;
+    cursor: pointer;
 }
+
+/* Podswietlenie jak w windows*/
+.icon::after {
+    content: "";
+    position: absolute;
+    top: -4px;     
+    left: -4px;
+    width: calc(100% + 8px);
+    height: calc(100% + 8px);
+    background: rgba(0, 215, 32, 0.3); 
+    border: 1px solid rgba(0, 215, 32, 0.8);
+    opacity: 0;
+    transition: opacity 0.15s ease;
+    pointer-events: none; 
+}
+
+.icon:hover::after {
+    opacity: 1;
+}
+
 
 span {
     position: absolute;
