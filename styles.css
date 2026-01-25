@@ -269,7 +269,7 @@ span {
 }
 
 .pointOption {
-    background: #4668424b;
+    background: rgba(46, 213, 116, 0.274);
     border: none;
     padding: 10px 20px;
     display: inline-block;
@@ -281,6 +281,7 @@ span {
     transform: skew(-21deg);
     margin: 2%;
 }
+
 
 span {
     display: inline-block;

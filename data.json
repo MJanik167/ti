@@ -45,7 +45,7 @@
             },
             {
                 "name": "Mauzoleum w Halikarnasie",
-                "image": "zdjecia/7c/zeus.jpg",
+                "image": "zdjecia/7c/mauzoleum.jpg",
                 "description": "Description for Point of Interest 2",
                 "coordinates": [
                     -0.7091,
@@ -65,7 +65,7 @@
             },
             {
                 "name": "Kolos Rodyjski",
-                "image": "zdjecia/7c/kolos.jpg",
+                "image": "zdjecia/7c/kolos.jpeg",
                 "description": "Description for Point of Interest 2",
                 "coordinates": [
                     -0.7102,
