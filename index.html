@@ -13,8 +13,8 @@
 <body>
     <div id="desktop">
 
-        <div class="icon" style="margin-top: 180px;">
-            <span>My Computer</span>
+        <div id="openApp" class="icon" style="margin-top: 180px;">
+            <span>Aplikacja nazwa aplikacji placeholder</span>
         </div>
         <div class="icon" style="margin-top: 580px;">
             <span>Recycle Bin</span>
@@ -23,19 +23,33 @@
             <span>Anihilacja ziemi</span>
         </div>
 
+        
         <div id="program">
-            <div id="sidebar">
-                <div id="camera"></div>
-                <div id="menu">
-                    <div class="menu-item">File</div>
-                    <div class="menu-item">Edit</div>
-                    <div class="menu-item">View</div>
-                    <div class="menu-item">Help</div>
+
+            <div id="topbar">
+                <div class="title">placeholder nazwa aplikacji</div>
+                <div class="window-controls">
+                    <button id="btn-fullwindow" title="Pełne okno">◻</button>
+                    <button id="btn-fullscreen" title="Pełny ekran">⛶</button>
+                    <button id="btn-closeprogram" title="Zamknij">✕</button>
                 </div>
             </div>
-            <div id="content">
-                <canvas class="scene"></canvas>
+            <div id="main">
+                <div id="sidebar">
+                    <div id="camera"></div>
+                    <div id="menu">
+                        
+                        <button class="button_anim">File</button>
+                        <button class="button_anim">Edit</button>
+                        <button class="button_anim">View</button>
+                        <button class="button_anim">Help</button>
+                    </div>
+                </div>
+                <div id="content">
+                    <canvas class="scene"></canvas>
+                </div>
             </div>
+            
         </div>
 
 

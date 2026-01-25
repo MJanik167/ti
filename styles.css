@@ -19,21 +19,42 @@ html {
 #desktop {
     width: 100vw;
     height: 100vh;
-    background-image: url(https://substackcdn.com/image/fetch/$s_!DSDj!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F451735cb-c5f9-4f24-a520-17c8cda161f4_1440x900.png);
+    background-image: url(spaceship-3334826_1920.jpg);
     background-size: cover;
-    /* background-color: #007400; */
+    background-position: center;
 }
 
 .icon {
     width: 64px;
     height: 64px;
-    background-color: "#FFFFFF";
+    background-color: #FFFFFF;
     margin: 16px;
     display: inline-block;
     background-image: url(https://assets.techrepublic.com/uploads/2016/11/giphy-5.gif);
     background-size: cover;
     position: absolute;
+    cursor: pointer;
 }
+
+/* Podswietlenie jak w windows*/
+.icon::after {
+    content: "";
+    position: absolute;
+    top: -4px;     
+    left: -4px;
+    width: calc(100% + 8px);
+    height: calc(100% + 8px);
+    background: rgba(0, 215, 32, 0.3); 
+    border: 1px solid rgba(0, 215, 32, 0.8);
+    opacity: 0;
+    transition: opacity 0.15s ease;
+    pointer-events: none; 
+}
+
+.icon:hover::after {
+    opacity: 1;
+}
+
 
 span {
     position: absolute;
@@ -44,22 +65,97 @@ span {
 
 #program {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;   
     position: absolute;
-    width: 80vw;
+    width: 70vw;
     height: 80vh;
-    background-color: rgb(161, 161, 161);
-    border: 10px solid gray;
+    background-color: rgb(0, 0, 0);
+    border: double 10px  rgb(46, 213, 115);
     margin: 10vw;
     margin-top: 5vh;
+    overflow: auto;
+}
+
+#program:fullscreen {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: 0;
+    border: none;
+}
+
+#program .resize-handle {
+    z-index: 1000;
+    background-color: transparent;
+}
+
+#program .resize-handle:hover {
+    background-color: rgba(100, 150, 255, 0.3);
+}
+
+#topbar {
+    height: 40px;
+    background: #444;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+    user-select: none;
+    cursor: grab;
+}
+
+.window-controls {
+    display: flex;
+    gap: 6px;
+}
+
+.window-controls button {
+    width: 32px;
+    height: 26px;
+    border: none;
+    background: #666;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.window-controls button:hover {
+    background: #888;
+}
+
+#main {
+    flex: 1;
+    display: flex;
+    overflow: hidden;
+    min-height: 0;
 }
 
 #sidebar {
     width: 25%;
-    height: 100%;
-    background-color: rgb(100, 100, 100);
+    flex-shrink: 0;
+    background-color: rgb(45, 40, 40);
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    padding: 1%;
 }
 
+#content {
+    flex: 1;
+    display: flex;
+    overflow: auto;
+    min-height: 0;
+}
+
+.scene {
+    width: 100%;
+    height: 100%;
+    display: block;
+    background-color: black;
+}
 
 #camera {
     width: 100%;
@@ -68,28 +164,7 @@ span {
     background-size: cover;
 }
 
-#content {
-    width: 75%;
-    height: 100%;
-    background-color: white;
-}
 
-.scene {
-    width: 100%;
-    height: 100%;
-    background-color: black;
-}
-
-.infoBox {
-    position: absolute;
-    animation: fadeIn 2000ms ease forwards;
-    width: 300px;
-    height: 300px;
-    padding: 10px;
-    border-radius: 5px;
-    max-width: 300px;
-    font-family: Arial, sans-serif;
-}
 
 .imageContainer {
     width: 100%;
@@ -116,3 +191,67 @@ span {
     background-color: gray;
     text-align: left;
 }
+
+
+.button_anim {
+    --main-color: rgb(46, 213, 115);
+    --main-bg-color: rgba(46, 213, 116, 0.36);
+    --pattern-color: rgba(46, 213, 116, 0.073);
+
+    filter: hue-rotate(0deg);
+
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.5rem;
+    background: radial-gradient(
+        circle,
+        var(--main-bg-color) 0%,
+        rgba(0, 0, 0, 0) 95%
+      ),
+      linear-gradient(var(--pattern-color) 1px, transparent 1px),
+      linear-gradient(to right, var(--pattern-color) 1px, transparent 1px);
+    background-size:
+      cover,
+      15px 15px,
+      15px 15px;
+    background-position:
+      center center,
+      center center,
+      center center;
+    border-image: radial-gradient(
+        circle,
+        var(--main-color) 0%,
+        rgba(0, 0, 0, 0) 100%
+      )
+      1;
+    border-width: 1px 0 1px 0;
+    color: var(--main-color);
+    padding: 1rem 3rem;
+    font-weight: 700;
+    font-size: 1.5rem;
+    transition: background-size 0.2s ease-in-out;
+    text-align: center;
+    width: 100%;
+    display: block;
+    margin-top: 4%;
+}
+
+.button_anim span {
+    display: inline-block;
+    width: 100%;
+    font-size: fit-content;
+    transform: scale(1);
+    white-space: nowrap;
+}
+
+.button_anim:hover {
+    background-size:
+      cover,
+      10px 10px,
+      10px 10px;
+}
+.button_anim:active {
+    filter: hue-rotate(250deg);
+}
+
+
