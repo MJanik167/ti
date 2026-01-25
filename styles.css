@@ -74,6 +74,7 @@ span {
     margin: 10vw;
     margin-top: 5vh;
     overflow: auto;
+    
 }
 
 #program:fullscreen {
@@ -266,3 +267,45 @@ span {
     max-height: 1000px;
     transform: translateY(0);
 }
+
+.pointOption {
+    background: #4668424b;
+    border: none;
+    padding: 10px 20px;
+    display: inline-block;
+    font-size: 15px;
+    font-weight: 600;
+    width: 80%;
+    text-transform: uppercase;
+    cursor: pointer;
+    transform: skew(-21deg);
+    margin: 2%;
+  }
+  
+  span {
+    display: inline-block;
+    transform: skew(21deg);
+  }
+  
+  .pointOption::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 100%;
+    left: 0;
+    background: rgba(211, 112, 67, 0.293);
+    opacity: 0;
+    z-index: -1;
+    transition: all 0.5s;
+  }
+  
+  .pointOption:hover {
+    color: #b4c7239e;
+  }
+  
+  .pointOption:hover::before {
+    left: 0;
+    right: 0;
+    opacity: 1;
+  }
