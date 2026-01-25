@@ -1,5 +1,6 @@
 {
     "7c": {
+        "title": "7 Cudów Starożytnego Świata",
         "description": "",
         "points": [
             {
@@ -85,6 +86,7 @@
         ]
     },
     "kz": {
+        "title": "Korona Ziemi",
         "description": "",
         "points": [
             {
@@ -170,6 +172,7 @@
         ]
     },
     "10miast_afryki": {
+        "title": "10 Największych Miast Afryki",
         "description": "",
         "points": [
             {
@@ -275,6 +278,7 @@
         ]
     },
     "2ws_bitwy": {
+        "title": "Znane Bitwy II Wojny Światowej",
         "description": "",
         "points": [
             {
@@ -340,6 +344,7 @@
         ]
     },
     "turystyczne": {
+        "title": "Miejsca Turystyczne Świata",
         "description": "",
         "points": [
             {

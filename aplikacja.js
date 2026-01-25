@@ -281,7 +281,7 @@ class App {
         for (let i in keys) {
             let div = document.createElement("div");
             div.className = "pointOption";
-            div.textContent = keys[i];
+            div.textContent = data[keys[i]].title;
 
             div.addEventListener("click", () => {
                 addPoints(keys[i]);
