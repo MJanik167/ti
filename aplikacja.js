@@ -4,81 +4,98 @@ import { Tween, Easing } from 'https://unpkg.com/@tweenjs/tween.js@23.1.3/dist/t
 import * as BufferGeometryUtils from 'https://unpkg.com/three@0.126.1/examples/jsm/utils/BufferGeometryUtils.js';
 import getStarfield from "./stars.js";
 
-// Scene
-let recentlyInteracted = false;
 
-async function loadJSON() {
-    try {
-        const response = await fetch('./data.json');
-        const data = await response.json();
-        return data;
-    } catch (error) {
-        console.error(error);
+class App {
+    constructor() {
+        this.recentlyInteracted = false;
+        this.canvas = document.querySelector('canvas.scene')
+        this.canvasContainer = document.querySelector('#content')
+        this.sizes = {
+            width: this.canvasContainer.clientWidth,
+            height: this.canvasContainer.clientHeight
+        }
+        this.renderer = new THREE.WebGLRenderer({
+            canvas: this.canvas,
+            antialias: true
+        })
+
+        this.scene = new THREE.Scene()
+        this.camera = new THREE.PerspectiveCamera(45, this.sizes.width / this.sizes.height)
+        this.camera.position.set(0, 0, 100)
+        this.controls = new OrbitControls(this.camera, this.renderer.domElement);
+        this.rect = this.renderer.domElement.getBoundingClientRect();
+
+        this.globe = new THREE.Group()
+        this.targetObject = null;
+
+        this.cameraTween = null
+        this.animate = this.animate.bind(this);
+
+        this.rotationSpeed = 0.001
+        this.tweens = []
+
     }
-}
 
-
-async function init() {
-
-    let data = await loadJSON();
-
-
-    const canvas = document.querySelector('canvas.scene')
-    const canvasContainer = document.querySelector('#content')
-    const sizes = {
-        width: canvasContainer.clientWidth,
-        height: canvasContainer.clientHeight
+    async loadJSON() {
+        try {
+            const response = await fetch('./data.json');
+            const data = await response.json();
+            return data;
+        } catch (error) {
+            console.error(error);
+        }
     }
-    window.addEventListener("resize", (event) => {
-        sizes.width = canvasContainer.clientWidth
-        sizes.height = canvasContainer.clientHeight
-        renderer.setSize(sizes.width, sizes.height)
-        camera.aspect = sizes.width / sizes.height
-        camera.updateProjectionMatrix()
-        rect = renderer.domElement.getBoundingClientRect();
-    })
-    window.addEventListener("click", (event) => {
-        recentlyInteracted = true;
-        console.log(event.clientX, event.clientY)
-    })
+
+    resize() {
+        this.sizes.width = this.canvasContainer.clientWidth
+        this.sizes.height = this.canvasContainer.clientHeight
+        this.renderer.setSize(this.sizes.width, this.sizes.height)
+        this.camera.aspect = this.sizes.width / this.sizes.height
+        this.camera.updateProjectionMatrix()
+        this.rect = this.renderer.domElement.getBoundingClientRect();
+    }
 
 
-    const scene = new THREE.Scene()
-    const camera = new THREE.PerspectiveCamera(45, sizes.width / sizes.height)
-    camera.position.set(0, 0, 100)
-    const renderer = new THREE.WebGLRenderer({
-        canvas: canvas,
-        antialias: true
-    })
-    let rect = renderer.domElement.getBoundingClientRect();
-    const controls = new OrbitControls(camera, renderer.domElement);
-    controls.enableDamping = true;
-    controls.maxDistance = 100;
-    controls.minDistance = 1.5;
-    controls.enablePan = false;
-    controls.update()
+    async init() {
+        if (this.cameraTween != null) return
+        let data = await this.loadJSON();
 
-    renderer.setSize(sizes.width, sizes.height)
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+        window.addEventListener("resize", (event) => {
+            this.resize()
+        })
+        window.addEventListener("click", (event) => {
+            this.recentlyInteracted = true;
+            console.log(event.clientX, event.clientY)
+        })
 
 
-    // Object
-    const globe = new THREE.Group()
 
-    const textureLoader = new THREE.TextureLoader()
-    const colorMap = textureLoader.load("8081_earthmap10k.jpg")
-    //const nightMap = textureLoader.load("8081_earthlights10k.jpg")
-    const alphaMap = textureLoader.load("8081_earthspec10k.jpg")
-    const elevMap = textureLoader.load("8081_earthbump10k.jpg")
+        this.controls.enableDamping = true;
+        this.controls.maxDistance = 100;
+        this.controls.minDistance = 1.5;
+        this.controls.enablePan = false;
+        this.controls.update()
+
+        this.renderer.setSize(this.sizes.width, this.sizes.height)
+        this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 
 
-    const stars = getStarfield({ numStars: 1000 })
-    scene.add(stars)
+        // Object
 
-    const detail = 90;
+        const textureLoader = new THREE.TextureLoader()
+        const colorMap = textureLoader.load("8081_earthmap10k.jpg")
+        //const nightMap = textureLoader.load("8081_earthlights10k.jpg")
+        const alphaMap = textureLoader.load("8081_earthspec10k.jpg")
+        const elevMap = textureLoader.load("8081_earthbump10k.jpg")
 
-    const pointsGeo = new THREE.IcosahedronGeometry(1, detail);
-    const vertexShader = `
+
+        const stars = getStarfield({ numStars: 1000 })
+        this.scene.add(stars)
+
+        const detail = 90;
+
+        const pointsGeo = new THREE.IcosahedronGeometry(1, detail);
+        const vertexShader = `
         uniform float size;
         uniform sampler2D pointTexture;
         uniform float time;
@@ -102,7 +119,7 @@ async function init() {
         }
     `
 
-    const fragmentShader = `
+        const fragmentShader = `
         uniform sampler2D colorMap;
         uniform sampler2D alphaMap;
         uniform float alphaChannel;
@@ -130,220 +147,259 @@ async function init() {
             }
     `
 
-    const uniforms = {
-        time: { type: "f", value: 0 },
-        size: { type: "f", value: 5 },
-        pointTexture: { type: "t", value: elevMap },
-        colorMap: { type: "t", value: colorMap },
-        alphaMap: { type: "t", value: alphaMap },
-        alphaChannel: { type: "f", value: 1.0 }
-    }
-
-    const pointsMat = new THREE.ShaderMaterial({
-        uniforms: uniforms,
-        vertexShader: vertexShader,
-        fragmentShader: fragmentShader,
-        transparent: true,
-        wireframe: true,
-    })
-    const mesh = new THREE.Mesh(pointsGeo, pointsMat)
-    globe.add(mesh)
-
-    const uniforms2 = {
-        time: { type: "f", value: 0 },
-        size: { type: "f", value: 5 },
-        pointTexture: { type: "t", value: elevMap },
-        colorMap: { type: "t", value: colorMap },
-        alphaMap: { type: "t", value: alphaMap },
-        alphaChannel: { type: "f", value: 0.0 }
-    }
-    const seaGeo = new THREE.IcosahedronGeometry(1, 12)
-    const seaMat = new THREE.ShaderMaterial({
-        uniforms: uniforms2,
-        vertexShader: vertexShader,
-        fragmentShader: fragmentShader,
-        transparent: false,
-        wireframe: true
-    })
-    const seaMesh = new THREE.Mesh(seaGeo, seaMat)
-    globe.add(seaMesh)
-
-    scene.add(globe)
-    scene.add(camera)
-
-    //points
-    const poiGroup = new THREE.Group();
-    const addPoints = (name) => {
-        if (poiGroup.children.length > 0) {
-            poiGroup.clear();
+        const uniforms = {
+            time: { type: "f", value: 0 },
+            size: { type: "f", value: 5 },
+            pointTexture: { type: "t", value: elevMap },
+            colorMap: { type: "t", value: colorMap },
+            alphaMap: { type: "t", value: alphaMap },
+            alphaChannel: { type: "f", value: 1.0 }
         }
-        let poi = data[name];
 
-        let diskMesh = new THREE.MeshBasicMaterial({ color: 0x4c4c4c });
-        let domeMesh = new THREE.MeshBasicMaterial({ color: 0x00bfc9 });
-        let lightMesh = new THREE.MeshStandardMaterial({
-            color: 0x00ff00,       // kolor podstawowy (zielony)
-            transparent: true,     // włącz przezroczystość
-            opacity: 0.5,          // 0 = całkowicie przezroczysty, 1 = pełny kolor
-            emissive: 0x00ff00,    // kolor świecącej części
-            emissiveIntensity: 0.8 // siła świecenia
-        });
-        //let geometry = [new THREE.SphereGeometry(0.005, 16, 16)];
-        let diskGeometry = new THREE.CylinderGeometry(0.015, 0.015, 0.002, 16)
-        let domeGeometry = new THREE.SphereGeometry(0.006, 32, 16);
-        let lightGeometry = new THREE.CylinderGeometry(0.004, 0.02, 0.1, 16)
-        let outlineMaterial = new THREE.MeshBasicMaterial({
-            color: 0x000000,  // kolor obrysu
-            side: THREE.BackSide // renderujemy od tyłu
-        });
-        let innerOutline = new THREE.CylinderGeometry(0.016,0.016,0.006,16)
-        for (let p in poi) {
-            console.log(poi[p].coordinates);
+        const pointsMat = new THREE.ShaderMaterial({
+            uniforms: uniforms,
+            vertexShader: vertexShader,
+            fragmentShader: fragmentShader,
+            transparent: true,
+            wireframe: true,
+        })
+        const mesh = new THREE.Mesh(pointsGeo, pointsMat)
+        this.globe.add(mesh)
 
-            let light = new THREE.Mesh(lightGeometry, lightMesh);
-            light.position.set(0, -0.05, 0);
-            let disk = new THREE.Mesh(diskGeometry, diskMesh);
-            let dome = new THREE.Mesh(domeGeometry, domeMesh);
-            let outlineMeshOuter = new THREE.Mesh(diskGeometry, outlineMaterial);
-            outlineMeshOuter.scale.multiplyScalar(1.1); 
-            let outlineMeshInner = new THREE.Mesh(innerOutline, outlineMaterial);
-            outlineMeshInner.scale.multiplyScalar(1.1); 
-            
-
-            let ufo = new THREE.Group();
-            ufo.add(disk);
-            ufo.add(dome);
-            ufo.add(light);
-            disk.add(outlineMeshOuter);
-           // disk.add(outlineMeshInner);
-            let coords = poi[p].coordinates.map(x => x * 1.1);
-            ufo.position.set(
-                coords[0],
-                coords[1],
-                coords[2]);
-            ufo.lookAt(new THREE.Vector3(0, 0, 0));
-            ufo.rotateX(-Math.PI / 2);
-            ufo.name = poi[p].name;
-            ufo.image = poi[p].image;
-            ufo.description = poi[p].description;
-            poiGroup.add(ufo);
+        const uniforms2 = {
+            time: { type: "f", value: 0 },
+            size: { type: "f", value: 5 },
+            pointTexture: { type: "t", value: elevMap },
+            colorMap: { type: "t", value: colorMap },
+            alphaMap: { type: "t", value: alphaMap },
+            alphaChannel: { type: "f", value: 0.0 }
         }
-        globe.add(poiGroup);
-    };
+        const seaGeo = new THREE.IcosahedronGeometry(1, 12)
+        const seaMat = new THREE.ShaderMaterial({
+            uniforms: uniforms2,
+            vertexShader: vertexShader,
+            fragmentShader: fragmentShader,
+            transparent: false,
+            wireframe: true
+        })
+        const seaMesh = new THREE.Mesh(seaGeo, seaMat)
+        this.globe.add(seaMesh)
 
-    //Raycaster
-    const raycaster = new THREE.Raycaster();
-    const mouse = new THREE.Vector2();
-    let infoBox;
-    let targetObject = document.createElement('div');;
-    window.addEventListener('click', (event) => {
-        if (window.document.body.contains(infoBox)) {
-            window.document.body.removeChild(infoBox);
-        }
-        mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
-        mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
-        raycaster.setFromCamera(mouse, camera);
-        const intersects = raycaster.intersectObjects(poiGroup.children, true);
-        //console.log(intersects[0].point);
-        if (intersects.length > 0) {
-            targetObject = intersects[0].object;
-            console.log('Clicked on object:', targetObject.parent);
-            console.log(targetObject.position);
+        this.scene.add(this.globe)
+        this.scene.add(this.camera)
 
-            if (targetObject.parent.name) {
-                let element = targetObject.parent;
-                infoBox = document.createElement('div');
-                infoBox.classList.add('infoBox');
-                infoBox.style.top = (event.clientY - 250) + 'px';
-                infoBox.style.left = (event.clientX + 30) + 'px';
-                window.document.body.appendChild(infoBox);
-                infoBox.innerHTML = `
-                <div class="textContainer"> 
-                    <h2>${element.name}</h2><p>${element.description}</p>
-                </div>
-                 <div class="imageContainer">
-                    <img src="${element.image}" alt="${element.name}" />
-                </div>
-                `;
-                infoBox.style.display = 'block';
+        //points
+        const poiGroup = new THREE.Group();
+        const addPoints = (name) => {
+            if (poiGroup.children.length > 0) {
+                poiGroup.children.forEach(poi => {
+                    this.tweens.push(new Tween(poi.position, false) // Create a new tween that modifies 'coords'.
+                        .to({ x: poi.position.x * 10, y: poi.position.y * 10, z: poi.position.z * 10 }, 3000) // Move to (300, 200) in 1 second.
+                        .easing(Easing.Quadratic.InOut) // Use an easing function to make the animation smooth.
+                        .onUpdate(() => {
+                            poi.position
+                        })
+                        .start() // Start the tween immediately.
+                        .onComplete(() => {
+                            poiGroup.remove(poi)
+                        }));
+                });
             }
-        }
-    })
+            let poi = data[name];
+            //console.log(poi["points"]);
+            console.log(this.tweens);
 
-    window.addEventListener('wheel', (event) => {
-        if (window.document.body.contains(infoBox)) {
-            window.document.body.removeChild(infoBox);
-            console.log("removed");
-        }
-    });
-    window.addEventListener('contextmenu', (event) => {
-        event.preventDefault();
-        if (window.document.body.contains(infoBox)) {
-            window.document.body.removeChild(infoBox);
-            console.log("removed");
-        }
-    });
 
-    targetObject = poiGroup.children[1];
-    const drag = (event) => {
-        mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
-        mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
-        raycaster.setFromCamera(mouse, camera);
+            let diskMesh = new THREE.MeshBasicMaterial({ color: 0x4c4c4c });
+            let domeMesh = new THREE.MeshBasicMaterial({ color: 0x2c73d2 });
+            let lightMesh = new THREE.MeshStandardMaterial({
+                color: 0x00ff00,       // kolor podstawowy (zielony)
+                transparent: true,     // włącz przezroczystość
+                opacity: 0.5,          // 0 = całkowicie przezroczysty, 1 = pełny kolor
+                emissive: 0x00ff00,    // kolor świecącej części
+                emissiveIntensity: 0.8 // siła świecenia
+            });
+            let diskGeometry = new THREE.CylinderGeometry(0.015, 0.015, 0.002, 10)
+            let domeGeometry = new THREE.SphereGeometry(0.006, 8, 8);
+            let lightGeometry = new THREE.CylinderGeometry(0.004, 0.028, 0.1, 6)
+            let outlineMaterial = new THREE.MeshBasicMaterial({
+                color: 0x000000,  // kolor obrysu
+                side: THREE.BackSide // renderujemy od tyłu
+            });
+            let innerOutlineGeometry = new THREE.CylinderGeometry(0.006, 0.006, 0.004, 16)
+            let outlineInnerMaterial = new THREE.MeshBasicMaterial({
+                color: 0x000000,
+            });
+            let points = poi["points"]
+            for (let p in points) {
+                console.log(points[p]);
+                let light = new THREE.Mesh(lightGeometry, lightMesh);
+                lightMesh.color.set(0xaaffaa)
+                light.position.set(0, -0.05, 0);
+                let disk = new THREE.Mesh(diskGeometry, diskMesh);
+                let dome = new THREE.Mesh(domeGeometry, domeMesh);
+                let outlineMeshOuter = new THREE.Mesh(diskGeometry, outlineMaterial);
+                outlineMeshOuter.scale.multiplyScalar(1.1);
+                let outlineMeshInner = new THREE.Mesh(innerOutlineGeometry, outlineInnerMaterial);
+                let ufo = new THREE.Group();
+                ufo.add(disk);
+                ufo.add(dome);
+                ufo.add(light);
+                ufo.add(outlineMeshOuter);
+                ufo.add(outlineMeshInner);
+
+                let coords = points[p].coordinates.map(x => x * 1.1);
+                ufo.position.set(
+                    coords[0] * 10,
+                    coords[1] * 10,
+                    coords[2] * 10);
+                ufo.lookAt(new THREE.Vector3(0, 0, 0));
+                ufo.rotateX(-Math.PI / 2);
+
+                ufo.name = points[p].name;
+                ufo.image = points[p].image;
+                ufo.description = points[p].description;
+
+                poiGroup.add(ufo);
+                this.tweens.push(new Tween(ufo.position, false) // Create a new tween that modifies 'coords'.
+                    .to({ x: coords[0], y: coords[1], z: coords[2] }, 3000) // Move to (300, 200) in 1 second.
+                    .easing(Easing.Circular.Out) // Use an easing function to make the animation smooth.
+                    .onUpdate(() => {
+                    })
+                    .start() // Start the tween immediately.
+                    .onComplete(() => {
+
+                    }));
+            }
+            this.globe.add(poiGroup);
+        };
+
+        //points to html list
+
+        let keys = Object.keys(data)
+        let menu = document.getElementById("dropdownPointMenu")
+        for (let i in keys) {
+            let div = document.createElement("div");
+            div.className = "pointOption";
+            div.textContent = keys[i];
+
+            div.addEventListener("click", () => {
+                addPoints(keys[i]);
+            });
+
+            menu.appendChild(div);
+        }
+
+
+        //Raycaster
+        const raycaster = new THREE.Raycaster();
+        const mouse = new THREE.Vector2();
+        let infoBox;
+        window.addEventListener('click', (event) => {
+            if (window.document.body.contains(infoBox)) {
+                window.document.body.removeChild(infoBox);
+            }
+            mouse.x = ((event.clientX - this.rect.left) / this.rect.width) * 2 - 1;
+            mouse.y = -((event.clientY - this.rect.top) / this.rect.height) * 2 + 1;
+            raycaster.setFromCamera(mouse, this.camera);
+            const intersects = raycaster.intersectObjects(poiGroup.children, true);
+            //console.log(intersects[0].point);
+            if (intersects.length > 0) {
+                this.targetObject = intersects[0].object;
+                console.log('Clicked on object:', this.targetObject.parent);
+                console.log(this.targetObject.position);
+
+                if (this.targetObject.parent.name) {
+                    let element = this.targetObject.parent;
+                    infoBox = document.createElement('div');
+                    infoBox.classList.add('infoBox');
+                    infoBox.style.top = (event.clientY - 250) + 'px';
+                    infoBox.style.left = (event.clientX + 30) + 'px';
+                    window.document.body.appendChild(infoBox);
+                    infoBox.innerHTML = `
+                    <div class="textContainer"> 
+                        <h2>${element.name}</h2><p>${element.description}</p>
+                    </div>
+                    <div class="imageContainer">
+                        <img src="${element.image}" alt="${element.name}" />
+                    </div>
+                    `;
+                    infoBox.style.display = 'block';
+                }
+            }
+        })
+
+        window.addEventListener('wheel', (event) => {
+            if (window.document.body.contains(infoBox)) {
+                window.document.body.removeChild(infoBox);
+                console.log("removed");
+            }
+        });
+        window.addEventListener('contextmenu', (event) => {
+            //event.preventDefault();
+            if (window.document.body.contains(infoBox)) {
+                window.document.body.removeChild(infoBox);
+                console.log("removed");
+            }
+        });
+
+        this.targetObject = poiGroup.children[1];
+        this.globe.renderOrder = 1;
+        poiGroup.renderOrder = 2;
+
+        this.cameraTween = new Tween(this.camera.position, false) // Create a new tween that modifies 'coords'.
+            .to({ x: 0, y: 0, z: 5 }, 3000) // Move to (300, 200) in 1 second.
+            .easing(Easing.Quadratic.InOut) // Use an easing function to make the animation smooth.
+            .onUpdate(() => {
+                this.camera.lookAt(this.globe.position);
+            })
+            .start() // Start the tween immediately.
+            .onComplete(() => {
+                this.controls.maxDistance = 10
+            });
+        requestAnimationFrame(this.animate)
+    }
+
+    drag = (event) => {
+        mouse.x = ((event.clientX - this.rect.left) / this.rect.width) * 2 - 1;
+        mouse.y = -((event.clientY - this.rect.top) / this.rect.height) * 2 + 1;
+        raycaster.setFromCamera(mouse, this.camera);
         const intersects = raycaster.intersectObjects(scene.children, true);
-        console.log(targetObject.position);
+        console.log(this.targetObject.position);
         if (intersects.length > 1) {
             let norm = intersects[0].point.normalize();
-            targetObject.position.set(norm.x, norm.y, norm.z);
+            this.targetObject.position.set(norm.x, norm.y, norm.z);
         }
     }
 
 
-
-    let time = 0;
-    let rotationSpeed = 0.001;
-
-    addPoints("kz")
-
-    const cameraTween = new Tween(camera.position, false) // Create a new tween that modifies 'coords'.
-        .to({ x: 0, y: 0, z: 5 }, 3000) // Move to (300, 200) in 1 second.
-        .easing(Easing.Quadratic.InOut) // Use an easing function to make the animation smooth.
-        .onUpdate(() => {
-            camera.lookAt(globe.position);
-        })
-        .start() // Start the tween immediately.
-        .onComplete(() => {
-            controls.maxDistance = 10
-        }
-        );
-
-    function animate(time) {
-        cameraTween.update(time);
+    animate(time) {
+        this.cameraTween.update(time);
+        this.tweens.forEach(tween => {
+            tween.update(time)
+        });
         time += 0.01;
         //uniforms.time = { value: time }
-        if (!recentlyInteracted) {
-            globe.rotation.y += rotationSpeed;
+        // console.log(this.recentlyInteracted);
+
+        if (!this.recentlyInteracted) {
+            this.globe.rotation.y += this.rotationSpeed;
         }
 
-        if (targetObject) {
+
+        if (this.targetObject) {
             //window.addEventListener('mousemove', drag);
         } else {
-            window.removeEventListener('mousemove', drag);
+            window.removeEventListener('mousemove', this.drag);
         }
 
-        controls.update();
+        this.controls.update();
 
+        this.renderer.render(this.scene, this.camera)
 
-        renderer.render(scene, camera)
-
-        requestAnimationFrame(animate)
+        requestAnimationFrame(this.animate)
     }
-
-    requestAnimationFrame(animate)
-
-
 }
 
 
-
-
-export { init }
+export { App }

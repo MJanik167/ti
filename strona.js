@@ -1,4 +1,4 @@
-function init() {
+function init(resize) {
 
     const btnFullscreen = document.getElementById("btn-fullscreen");
     const btnFullwindow = document.getElementById("btn-fullwindow");
@@ -9,8 +9,10 @@ function init() {
     btnFullscreen.addEventListener("click", () => {
         if (!document.fullscreenElement) {
             program.requestFullscreen();
+            resize();
         } else {
             document.exitFullscreen();
+            resize();
         }
     });
 
@@ -26,6 +28,7 @@ function init() {
             program.style.margin = "0";
             program.style.border = "none";
             isFullwindow = true;
+            resize();
         }
         else {
             program.style.position = "absolute";
@@ -37,6 +40,7 @@ function init() {
             program.style.marginTop = "5vh";
             program.style.border = "10px solid gray";
             isFullwindow = false;
+            resize();
         }
     });
 
@@ -152,11 +156,11 @@ function init() {
         if (resizeDirection === 'right') {
             const newWidth = Math.max(minWidth, startWidth + deltaX);
             program.style.width = newWidth + 'px';
-        } 
+        }
         else if (resizeDirection === 'bottom') {
             const newHeight = Math.max(minHeight, startHeight + deltaY);
             program.style.height = newHeight + 'px';
-        } 
+        }
         else if (resizeDirection === 'corner') {
             const newWidth = Math.max(minWidth, startWidth + deltaX);
             const newHeight = Math.max(minHeight, startHeight + deltaY);
@@ -203,6 +207,8 @@ function init() {
         }
 
         program.style.margin = '0';
+
+        resize();
     });
 
     document.addEventListener('mouseup', () => {
@@ -212,8 +218,8 @@ function init() {
 
     // Przesuwanie okna
     let isDragging = false;
-     startX = 0;
-     startY = 0;
+    startX = 0;
+    startY = 0;
     let startProgramX = 0;
     let startProgramY = 0;
 
@@ -221,12 +227,12 @@ function init() {
         isDragging = true;
         startX = e.clientX;
         startY = e.clientY;
-        
+
         // Obecna pozycja
         const rect = program.getBoundingClientRect();
         startProgramX = rect.left;
         startProgramY = rect.top;
-        
+
         topbar.style.cursor = 'grabbing';
     });
 
@@ -242,6 +248,7 @@ function init() {
         program.style.left = newX + 'px';
         program.style.top = newY + 'px';
         program.style.margin = '0';
+        resize()
     });
 
     //Funkcjonalności po najechaniu myszką na topbar

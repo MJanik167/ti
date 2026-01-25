@@ -40,15 +40,15 @@ html {
 .icon::after {
     content: "";
     position: absolute;
-    top: -4px;     
+    top: -4px;
     left: -4px;
     width: calc(100% + 8px);
     height: calc(100% + 8px);
-    background: rgba(0, 215, 32, 0.3); 
+    background: rgba(0, 215, 32, 0.3);
     border: 1px solid rgba(0, 215, 32, 0.8);
     opacity: 0;
     transition: opacity 0.15s ease;
-    pointer-events: none; 
+    pointer-events: none;
 }
 
 .icon:hover::after {
@@ -65,12 +65,12 @@ span {
 
 #program {
     display: flex;
-    flex-direction: column;   
+    flex-direction: column;
     position: absolute;
     width: 70vw;
     height: 80vh;
     background-color: rgb(0, 0, 0);
-    border: double 10px  rgb(46, 213, 115);
+    border: double 10px rgb(46, 213, 115);
     margin: 10vw;
     margin-top: 5vh;
     overflow: auto;
@@ -192,7 +192,6 @@ span {
     text-align: left;
 }
 
-
 .button_anim {
     --main-color: rgb(46, 213, 115);
     --main-bg-color: rgba(46, 213, 116, 0.36);
@@ -203,27 +202,22 @@ span {
     cursor: pointer;
     text-transform: uppercase;
     letter-spacing: 0.5rem;
-    background: radial-gradient(
-        circle,
-        var(--main-bg-color) 0%,
-        rgba(0, 0, 0, 0) 95%
-      ),
-      linear-gradient(var(--pattern-color) 1px, transparent 1px),
-      linear-gradient(to right, var(--pattern-color) 1px, transparent 1px);
+    background: radial-gradient(circle,
+            var(--main-bg-color) 0%,
+            rgba(0, 0, 0, 0) 95%),
+        linear-gradient(var(--pattern-color) 1px, transparent 1px),
+        linear-gradient(to right, var(--pattern-color) 1px, transparent 1px);
     background-size:
-      cover,
-      15px 15px,
-      15px 15px;
+        cover,
+        15px 15px,
+        15px 15px;
     background-position:
-      center center,
-      center center,
-      center center;
-    border-image: radial-gradient(
-        circle,
-        var(--main-color) 0%,
-        rgba(0, 0, 0, 0) 100%
-      )
-      1;
+        center center,
+        center center,
+        center center;
+    border-image: radial-gradient(circle,
+            var(--main-color) 0%,
+            rgba(0, 0, 0, 0) 100%) 1;
     border-width: 1px 0 1px 0;
     color: var(--main-color);
     padding: 1rem 3rem;
@@ -246,12 +240,27 @@ span {
 
 .button_anim:hover {
     background-size:
-      cover,
-      10px 10px,
-      10px 10px;
+        cover,
+        10px 10px,
+        10px 10px;
 }
+
 .button_anim:active {
     filter: hue-rotate(250deg);
 }
 
+#dropdownPointMenu {
+    opacity: 0;
+    transform: translateY(-10px);
+    max-height: 0px;
+    transition:
+        opacity 0.25s ease,
+        transform 0.25s ease,
+        max-height 0.25s ease;
+}
 
+#dropdownPointMenu.open {
+    opacity: 1;
+    max-height: 1000px;
+    transform: translateY(0);
+}
