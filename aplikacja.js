@@ -342,6 +342,7 @@ class App {
                 console.log("removed");
             }
         });
+        window.addEventListener('mousemove', this.drag);
 
         this.targetObject = poiGroup.children[1];
         this.globe.renderOrder = 1;
@@ -388,7 +389,7 @@ class App {
 
 
         if (this.targetObject) {
-            //window.addEventListener('mousemove', drag);
+            window.addEventListener('mousemove', this.drag);
         } else {
             window.removeEventListener('mousemove', this.drag);
         }
