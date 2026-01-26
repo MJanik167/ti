@@ -33,6 +33,14 @@ class App {
 
         this.rotationSpeed = 0.001
         this.tweens = []
+        this.quizActive = false;
+        this.correctPoint = null
+        this.quizRounds = 0;
+        this.currentRound = 0;
+        this.quizScore = 0;
+
+
+
 
         let domeMesh = new THREE.MeshBasicMaterial({ color: 0x2c73d2 });
 
@@ -281,13 +289,15 @@ class App {
             this.globe.add(poiGroup);
 
 
-            let descriptionBox = document.getElementById("descriptionBox");
-            descriptionBox.classList.remove("hidden");
-            descriptionBox.innerHTML = `<p>${poi["description"]}</p>`;
-            setTimeout(() => {
-                descriptionBox.classList.add("hidden");
-                descriptionBox.innerHTML = "";
-            }, 10000);
+            // Nie pokazuj opisów, jeśli quiz jest aktywny
+            if (!this.quizActive) {
+                let descriptionBox = document.getElementById("descriptionBox");
+                descriptionBox.classList.remove("hidden");
+                descriptionBox.innerHTML = `<p>${poi["description"]}</p>`;
+                setTimeout(() => {
+                    descriptionBox.classList.add("hidden");
+                    descriptionBox.innerHTML = "";
+                }, 10000);}
         };
 
         //points to html list
@@ -307,6 +317,53 @@ class App {
         }
 
 
+        //quiz
+        let quiz=document.getElementById("quizstart");
+        let ilosckategorii=Object.keys(data).length;
+        console.log(ilosckategorii);
+
+        quiz.addEventListener("click", () => {
+
+            this.quizActive = true;
+            this.quizRounds = 5;
+            this.currentRound = 1;
+            this.quizScore = 0;
+        
+            descriptionBox.classList.remove("hidden");
+            descriptionBox.innerHTML = `<p>Zadam ci pytanie o to gdzie jest jakieś miejsce, a ty musisz je wskazać, gotowy?</p>`;
+        
+            setTimeout(() => {
+                startQuizRound(); 
+            }, 3000);
+        });
+        
+        
+
+        const startQuizRound = () => {
+
+            descriptionBox.classList.remove("hidden");
+            descriptionBox.innerHTML = `<p>Runda ${this.currentRound} z ${this.quizRounds}. Przygotuj się...</p>`;
+        
+            let randomKey = keys[Math.floor(Math.random() * keys.length)];
+            let wybranaKategoria = data[randomKey];
+            let punkty = wybranaKategoria.points;
+            let wylosowanyPunkt = punkty[Math.floor(Math.random() * punkty.length)];
+            this.correctPoint = wylosowanyPunkt.name;
+            
+            addPoints(randomKey); // pokaż punkty na globie
+        
+            setTimeout(() => {
+                descriptionBox.innerHTML = `
+                    <p>Runda ${this.currentRound} z ${this.quizRounds}</p>
+                    <p>Punkty: <strong>${this.quizScore}</strong></p>
+                    <p>Kategoria: <strong>${wybranaKategoria.title}</strong></p>
+                    <p>Wskaż na mapie: <strong>${wylosowanyPunkt.name}</strong></p>
+                `;
+            }, 2000);
+        };
+        
+
+
         //Raycaster
         const raycaster = new THREE.Raycaster();
         const mouse = new THREE.Vector2();
@@ -321,28 +378,72 @@ class App {
             const intersects = raycaster.intersectObjects(poiGroup.children, true);
             //console.log(intersects[0].point);
             if (intersects.length > 0) {
-                this.targetObject = intersects[0].object;
-                console.log('Clicked on object:', this.targetObject.parent);
-                console.log(this.targetObject.position);
+                let clicked = intersects[0].object.parent;
+            
+                // tryb quizu
+                if (this.quizActive) {
 
-                if (this.targetObject.parent.name) {
-                    let element = this.targetObject.parent;
+                    let box = document.getElementById("descriptionBox");
+                    box.classList.remove("hidden");
+                
+                    if (clicked.name === this.correctPoint) {
+                        this.quizScore++;   // dodaj zdobyty punkt
+                        box.innerHTML = `<p style="color:#00cc00;">Dobrze! To właściwe miejsce.</p>`;
+                        //przejście do następnej rundy
+                        this.currentRound++;
+                        if (this.currentRound > this.quizRounds) {
+                            // koniec quizu
+                            this.quizActive = false;
+                            this.correctPoint = null;
+                            setTimeout(() => {
+                                box.innerHTML = `<p>Quiz zakończony! Gratulacje.</p>
+                                <p>Twój wynik: <strong>${this.quizScore} / ${this.quizRounds}</strong></p>`;
+                                setTimeout(() => { box.classList.add("hidden"); box.innerHTML = ""; }, 3000);
+                            }, 1000);
+                        } else {
+                            // start kolejnej rundy
+                            setTimeout(() => {
+                                startQuizRound();
+                            }, 1500);
+                        }
+                
+                    } else {
+                        box.innerHTML = `<p style="color:#cc0000;">To nie to miejsce. Spróbuj inny punkt</p>`;
+                    }
+                
+                    if (!this.quizActive) {
+                        setTimeout(() => {
+                            box.classList.add("hidden");
+                            box.innerHTML = "";
+                        }, 3000);
+                    }
+                    
+                
+                    return; // nie pokazuj infoBoxa w trybie quizu
+                }
+                
+            
+                // normalny tryb
+                this.targetObject = clicked;
+            
+                if (clicked.name) {
                     infoBox = document.createElement('div');
                     infoBox.classList.add('infoBox');
                     infoBox.style.top = (event.clientY - 250) + 'px';
                     infoBox.style.left = (event.clientX + 30) + 'px';
                     window.document.body.appendChild(infoBox);
                     infoBox.innerHTML = `
-                    <div class="textContainer"> 
-                        <h2>${element.name}</h2><p>${element.description}</p>
-                    </div>
-                    <div class="imageContainer">
-                        <img src="${element.image}" alt="${element.name}" />
-                    </div>
+                        <div class="textContainer"> 
+                            <h2>${clicked.name}</h2><p>${clicked.description}</p>
+                        </div>
+                        <div class="imageContainer">
+                            <img src="${clicked.image}" alt="${clicked.name}" />
+                        </div>
                     `;
                     infoBox.style.display = 'block';
                 }
             }
+            
         })
 
         window.addEventListener('wheel', (event) => {

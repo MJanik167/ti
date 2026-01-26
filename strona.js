@@ -1,4 +1,4 @@
-function init(resize) {
+async function init(resize) {
 
     const btnFullscreen = document.getElementById("btn-fullscreen");
     const btnFullwindow = document.getElementById("btn-fullwindow");
@@ -294,6 +294,35 @@ function init(resize) {
             window.location.href = "pusta.html";
         });
     });
+
+
+
+    const pomoc = document.getElementById("pomoc");
+
+    const descriptionBox = document.getElementById("descriptionBox");
+
+pomoc.addEventListener("mouseenter", () => {
+    descriptionBox.classList.remove("hidden");
+    descriptionBox.innerHTML = `
+        <h2>Pomoc</h2>
+            <p>Witaj w naszej aplikacji edukacyjnej Nomad! Oto kilka wskazówek, jak z niej korzystać:</p>
+            <ul>
+                <li><strong>Poruszanie się po mapie:</strong> Użyj myszy lub touchpada, aby przesuwać i przybliżać/oddalać widok mapy.</li>
+                <li><strong>Menu Miejsca:</strong> Kliknij przycisk "Miejsca", aby zobaczyć listę dostępnych punktów na mapie. Wybierz punkt, aby uzyskać więcej informacji.</li>
+                <li><strong>Quiz:</strong> Kliknij przycisk "Quiz", aby rozpocząć interaktywny quiz geograficzny. Wybierz poprawne lokalizacje na mapie, aby zdobywać punkty!</li>
+                <li><strong>Zmiana rozmiaru okna:</strong> Użyj przycisków w górnym pasku, aby przełączyć się na tryb pełnego okna lub pełnego ekranu. Możesz także przeciągać krawędzie okna, aby zmienić jego rozmiar.</li>
+                <li><strong>Przesuwanie okna:</strong> Kliknij i przeciągnij górny pasek okna, aby przenieść aplikację w inne miejsce na ekranie.</li>  
+            </ul>
+            <p>Miłej zabawy i nauki!</p>
+    `;
+});
+
+descriptionBox.addEventListener("mouseleave", () => {
+    descriptionBox.classList.add("hidden");
+    descriptionBox.innerHTML = "";
+});
+
+    
 }
 
 }
