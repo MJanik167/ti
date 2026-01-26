@@ -4,7 +4,9 @@ function init(resize) {
     const btnFullwindow = document.getElementById("btn-fullwindow");
     const btnCloseprogram = document.getElementById("btn-closeprogram");
     const program = document.getElementById("program");
+    const learnmore = document.getElementById("learnmore_window");
     const topbar = document.getElementById("topbar");
+    const btnCloseLearnmore = document.getElementById("btn-closelearnmore");
 
     btnFullscreen.addEventListener("click", () => {
         if (!document.fullscreenElement) {
@@ -273,6 +275,27 @@ function init(resize) {
     document.getElementById("openApp").addEventListener("click", () => {
         program.style.display = 'block';
     });
+
+    //funkcjonalność przycisku dowiedz się więcej
+    document.getElementById("learnmore").addEventListener("click", () => {
+        learnmore.style.display = 'block';
+    });
+
+    btnCloseLearnmore.addEventListener("click", () => {
+        learnmore.style.display = "none";
+    });
+
+    // Obsługa kliknięć na ikony w #ikonylm
+    const ikonylmContainer = document.getElementById("ikonylm");
+    if (ikonylmContainer) {
+    const ikony = ikonylmContainer.querySelectorAll(".icon");
+    ikony.forEach(icon => {
+        icon.addEventListener("click", () => {
+            window.location.href = "pusta.html";
+        });
+    });
+}
+
 }
 
 export { init }
