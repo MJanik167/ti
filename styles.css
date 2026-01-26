@@ -395,6 +395,8 @@ span {
     padding: 0 10px;
     user-select: none;
     cursor: default;
+
+    font-family: monospace;
 }
 
 #learnmore_window {
@@ -404,6 +406,8 @@ span {
     border: double 10px rgb(46, 213, 115);
     color: rgba(46, 213, 116, 0.558);
     margin: 10vh 15vw;
+
+    font-family: monospace;
 
     overflow: auto;
     display: none;
