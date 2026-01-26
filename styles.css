@@ -330,7 +330,7 @@ span {
     padding: 10px;
     border-radius: 5px;
     max-width: 300px;
-    font-family: venite, Arial, sans-serif;
+    font-family: monospace;
 }
 
 .imageContainer {
@@ -360,6 +360,8 @@ span {
     background: conic-gradient(from 90deg at 1px 1px, #0000 90deg, rgb(0, 61, 26) 0) 0 0/30px 30px;
     background-color: rgba(0, 0, 0, 0.7);
     text-align: left;
+
+    font-family: monospace;
     color: rgb(46, 213, 115);
     border: rgb(46, 213, 115) groove 2px;
 }
@@ -368,14 +370,15 @@ span {
     position: absolute;
     top: 25%;
     left: 1%;
-    width: 40%;
-    height: 15%;
+    width: 50%;
     background-color: rgba(0, 0, 0, 0.7);
     border: rgb(46, 213, 115) groove 5px;
     color: white;
     padding: 20px;
     box-sizing: border-box;
     overflow: auto;
+
+    font-family: monospace;
 }
 
 .hidden {
@@ -397,18 +400,17 @@ span {
 #learnmore_window {
     position: absolute;
     width: 70vw;
-    height: 80vh;
     background-color: rgb(46, 38, 38);
     border: double 10px rgb(46, 213, 115);
     color: rgba(46, 213, 116, 0.558);
     margin: 10vh 15vw;
-    
+
     overflow: auto;
     display: none;
 }
 
 #ikonylm {
-    
+
     width: 100%;
     height: 17%;
     display: flex;
@@ -423,23 +425,23 @@ span {
 #ikonylm .icon {
     position: relative;
     margin: 0;
-    }
+}
 
 #learnmore_main {
     margin: 2%;
-    height: 100%; 
+    height: 100%;
 }
 
 #learnmore_content {
     width: 100%;
-    
+
 }
 
 footer {
-        
+
     height: 10%;
     text-align: center;
-    padding: 20px;       
+    padding: 20px;
 }
 
 .footer-line {

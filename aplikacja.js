@@ -100,7 +100,7 @@ class App {
         const stars = getStarfield({ numStars: 1000 })
         this.scene.add(stars)
 
-        const detail = 90;
+        const detail = 100;
 
         const pointsGeo = new THREE.IcosahedronGeometry(1, detail);
         const vertexShader = `

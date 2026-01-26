@@ -1,0 +1,78 @@
+@keyframes gradientFlow {
+    0% {
+        background-position: 0% 0%;
+    }
+
+    100% {
+        background-position: 50% 250%;
+    }
+}
+
+@font-face {
+    font-family: venite;
+    src: url(VeniteAdoremus-rgRBA.ttf);
+}
+
+
+
+body {
+    background:
+        conic-gradient(from 90deg at 3px 3px, #0000 90deg, rgba(12, 189, 85, 0.5) 0) 0 0/8vh 8vh,
+        radial-gradient(circle at center in hsl longer hue, rgba(46, 213, 115, 0.7) 20%, transparent 80%);
+    background-color: rgba(0, 0, 0, 1);
+    animation: gradientFlow 150s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
+
+}
+
+h1 {
+    color: rgb(46, 213, 115);
+    text-align: center;
+    margin-bottom: 0;
+    font-family: venite, Arial, sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+h2 {
+    font-family: venite, Arial, sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: rgb(46, 213, 115);
+    text-align: center;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+button {
+    height: 5vh;
+    width: 25vw;
+    border: none;
+    border-top: rgb(46, 213, 115) 1px solid;
+    border-bottom: rgb(46, 213, 115) 1px solid;
+    background: linear-gradient(to left, transparent 0%, rgb(46, 213, 115) 30%, rgb(46, 213, 115) 70%, transparent 100%);
+    color: rgb(255, 255, 255);
+    font-family: monospace;
+    font-size: 1.2rem;
+    text-align: center;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+
+}
+
+
+button:hover {
+    height: 5vh;
+    width: 25vw;
+    border: none;
+    border-top: rgb(46, 213, 115) 1px solid;
+    border-bottom: rgb(46, 213, 115) 1px solid;
+    background: linear-gradient(to left, transparent 0%, rgb(163, 240, 195) 30%, rgb(163, 240, 195) 70%, transparent 100%);
+    color: rgb(255, 255, 255);
+    text-align: center;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
