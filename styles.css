@@ -377,7 +377,7 @@ span {
     padding: 20px;
     box-sizing: border-box;
     overflow: auto;
-
+    font-size: 1.1rem;
     font-family: monospace;
 }
 
@@ -455,7 +455,7 @@ footer {
 }
 
 #ai {
-    background-image: url("zdjecia/ikony/czatai.jpg");
+    background-image: url("zdjecia/ikony/czatai.png");
     background-size: cover;
     background-position: center;
 }
