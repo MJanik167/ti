@@ -1,7 +1,7 @@
 {
     "7c": {
         "title": "7 Cudów Starożytnego Świata",
-        "description": "",
+        "description": "To są rzeczy które te istoty uznały za wyjątkowe jakiś czas temu, patrząc na ich położenie, wszystko wskazuje na to że świat był wtedy znacznie mniejszy",
         "points": [
             {
                 "name": "Piramida Cheopsa",
@@ -180,9 +180,9 @@
                 "image": "zdjecia/ma/kair.jpg",
                 "description": "Stolica Egiptu i największe miasto Afryki.",
                 "coordinates": [
-                    -0.0905,
-                    0.4795,
-                    0.8728
+                    -0.7442,
+                    0.4933,
+                    0.4501
                 ]
             },
             {
@@ -190,9 +190,9 @@
                 "image": "zdjecia/ma/kins.jpg",
                 "description": "Drugie najwieksze miasto Afryki i stolica Demokratycznej Republiki Konga.",
                 "coordinates": [
-                    -0.6255,
-                    -0.0867,
-                    0.7753
+                    -0.9548,
+                    -0.0795,
+                    0.2862
                 ]
             },
             {
@@ -200,9 +200,9 @@
                 "image": "zdjecia/ma/lagos.jpg",
                 "description": "Trzecie najwieksze miasto Afryki i największe miasto Nigerii.",
                 "coordinates": [
-                    -0.7929,
-                    0.1169,
-                    0.5978
+                    -0.9909,
+                    0.1221,
+                    0.0562
                 ]
             },
             {
@@ -210,9 +210,9 @@
                 "image": "zdjecia/ma/ibadan.webp",
                 "description": "Czwarte najwieksze miasto Afryki i drugie największe miasto Nigerii.",
                 "coordinates": [
-                    -0.7903,
-                    0.1404,
-                    0.5963
+                    -0.9876,
+                    0.1415,
+                    0.0679
                 ]
             },
             {
@@ -220,9 +220,9 @@
                 "image": "zdjecia/ma/johan.jpg",
                 "description": "Piąte najwieksze miasto Afryki i największe miasto Republiki Południowej Afryki.",
                 "coordinates": [
-                    -0.4346,
-                    -0.4446,
-                    0.7831
+                    -0.7943,
+                    -0.4493,
+                    0.4088
                 ]
             },
             {
@@ -230,9 +230,9 @@
                 "image": "zdjecia/ma/luanda.jpg",
                 "description": "Szóste najwieksze miasto Afryki i stolica Angoli.",
                 "coordinates": [
-                    -0.6766,
-                    -0.1553,
-                    0.7197
+                    -0.9597,
+                    -0.1625,
+                    0.2292
                 ]
             },
             {
@@ -240,9 +240,9 @@
                 "image": "zdjecia/ma/abidzan.jpg",
                 "description": "Siódme najwieksze miasto Afryki i największe miasto Wybrzeża Kości Słoniowej.",
                 "coordinates": [
-                    -0.8622,
-                    0.0939,
-                    0.4977
+                    -0.9936,
+                    0.0945,
+                    -0.0611
                 ]
             },
             {
@@ -250,9 +250,9 @@
                 "image": "zdjecia/ma/nairobi.webp",
                 "description": "Ósme najwieksze miasto Afryki i stolica Kenii.",
                 "coordinates": [
-                    -0.3227,
-                    -0.0206,
-                    0.9462
+                    -0.8119,
+                    -0.0341,
+                    0.5827
                 ]
             },
             {
@@ -260,9 +260,9 @@
                 "image": "zdjecia/ma/alex.jpg",
                 "description": "Dziewiąte najwieksze miasto Afryki i drugie największe miasto Egiptu.",
                 "coordinates": [
-                    -0.3803,
-                    0.5180,
-                    0.7660
+                    -0.7448,
+                    0.5108,
+                    0.4292
                 ]
             },
             {
@@ -270,9 +270,9 @@
                 "image": "zdjecia/ma/dels.jpg",
                 "description": "Dziesiąte najwieksze miasto Afryki i największe miasto Tanzanii.",
                 "coordinates": [
-                    -0.2959,
-                    -0.1163,
-                    0.9481
+                    -0.7709,
+                    -0.1152,
+                    0.6264
                 ]
             }
         ]
@@ -286,9 +286,9 @@
                 "image": "",
                 "description": "Jedna z najważniejszych bitew II wojny światowej, która miała miejsce w latach 1942-1943.",
                 "coordinates": [
-                    -0.1551,
-                    0.7533,
-                    0.6390
+                    -0.4785,
+                    0.7608,
+                    0.4382
                 ]
             },
             {
@@ -296,9 +296,9 @@
                 "image": "",
                 "description": "Inwazja aliantów na okupowaną przez Niemcy Francję w czerwcu 1944 roku.",
                 "coordinates": [
-                    -0.5481,
-                    0.7580,
-                    0.3534
+                    -0.6546,
+                    0.7559,
+                    0.0006
                 ]
             },
             {
@@ -306,9 +306,9 @@
                 "image": "",
                 "description": "Decydująca bitwa morska na Pacyfiku w czerwcu 1942 roku.",
                 "coordinates": [
-                    0.6913,
-                    0.4875,
-                    -0.5332
+                    0.7397,
+                    0.6671,
+                    -0.0875
                 ]
             },
             {
@@ -316,9 +316,9 @@
                 "image": "",
                 "description": "Kluczowa bitwa na froncie afrykańskim w październiku 1942 roku.",
                 "coordinates": [
-                    -0.4044,
-                    0.5150,
-                    0.7557
+                    -0.7560,
+                    0.5125,
+                    0.4070
                 ]
             },
             {
@@ -326,9 +326,9 @@
                 "image": "",
                 "description": "Największa bitwa pancerna w historii, która miała miejsce w lipcu 1943 roku.",
                 "coordinates": [
-                    -0.2230,
-                    0.7760,
-                    0.5899
+                    -0.4941,
+                    0.7924,
+                    0.3575
                 ]
             },
             {
@@ -336,9 +336,9 @@
                 "image": "",
                 "description": "Atak japoński na amerykańską bazę morską w grudniu 1941 roku.",
                 "coordinates": [
-                    0.5291,
-                    0.3680,
-                    -0.7645
+                    0.8628,
+                    0.3638,
+                    -0.3507
                 ]
             }
         ]
@@ -485,6 +485,26 @@
                     -0.0168,
                     0.3538,
                     -0.9351
+                ]
+            },
+            {
+                "name": "Wyspy Wielkanocne",
+                "image": "",
+                "description": "Znane z tajemniczych posągów Moai, położone na Oceanie Spokojnym.",
+                "coordinates": [
+                    0.2986,
+                    -0.4560,
+                    -0.8383
+                ]
+            },
+            {
+                "name": "Świątynia Małpi las w Ubud",
+                "image": "",
+                "description": "Znana świątynia w Bali, otoczona przez małpy i bujną roślinność.",
+                "coordinates": [
+                    0.4211,
+                    -0.1464,
+                    0.8950
                 ]
             }
         ]

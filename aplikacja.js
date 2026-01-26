@@ -34,6 +34,12 @@ class App {
         this.rotationSpeed = 0.001
         this.tweens = []
 
+        let domeMesh = new THREE.MeshBasicMaterial({ color: 0x2c73d2 });
+
+        let domeGeometry = new THREE.SphereGeometry(0.006, 8, 8);
+
+        //this.target = new THREE.Mesh(domeGeometry, domeMesh);
+        //this.scene.add(this.target); //Dodawanie punktów
     }
 
     async loadJSON() {
@@ -207,7 +213,13 @@ class App {
             }
             let poi = data[name];
             //console.log(poi["points"]);
-            console.log(this.tweens);
+
+            let cameraBox = document.getElementById("camera");
+            let descriptionBox = document.createElement("div");
+            descriptionBox.id = "descriptionBox";
+            descriptionBox.innerHTML = `<h2>${poi["title"]}</h2><p>${poi["description"]}</p>`;
+            cameraBox.appendChild(descriptionBox);
+
 
 
             let diskMesh = new THREE.MeshBasicMaterial({ color: 0x4c4c4c });
@@ -342,7 +354,7 @@ class App {
                 console.log("removed");
             }
         });
-        window.addEventListener('mousemove', this.drag);
+        //window.addEventListener('mousemove', this.drag);//dodawanie punktów
 
         this.targetObject = poiGroup.children[1];
         this.globe.renderOrder = 1;
@@ -361,15 +373,19 @@ class App {
         requestAnimationFrame(this.animate)
     }
 
+
     drag = (event) => {
+        let mouse = new THREE.Vector2();
+        let raycaster = new THREE.Raycaster();
+
         mouse.x = ((event.clientX - this.rect.left) / this.rect.width) * 2 - 1;
         mouse.y = -((event.clientY - this.rect.top) / this.rect.height) * 2 + 1;
         raycaster.setFromCamera(mouse, this.camera);
-        const intersects = raycaster.intersectObjects(scene.children, true);
-        console.log(this.targetObject.position);
+        const intersects = raycaster.intersectObjects(this.scene.children, true);
+        console.log(this.target.position);
         if (intersects.length > 1) {
             let norm = intersects[0].point.normalize();
-            this.targetObject.position.set(norm.x, norm.y, norm.z);
+            this.target.position.set(norm.x, norm.y, norm.z);
         }
     }
 
@@ -384,15 +400,10 @@ class App {
         // console.log(this.recentlyInteracted);
 
         if (!this.recentlyInteracted) {
-            this.globe.rotation.y += this.rotationSpeed;
+            //this.globe.rotation.y += this.rotationSpeed;
         }
 
 
-        if (this.targetObject) {
-            window.addEventListener('mousemove', this.drag);
-        } else {
-            window.removeEventListener('mousemove', this.drag);
-        }
 
         this.controls.update();
 
