@@ -377,7 +377,7 @@ span {
     padding: 20px;
     box-sizing: border-box;
     overflow: auto;
-
+    font-size: 1.1rem;
     font-family: venite, Arial, sans-serif;
     font-size: 1.1rem;
 }
