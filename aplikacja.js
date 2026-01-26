@@ -71,6 +71,8 @@ class App {
         })
         window.addEventListener("click", (event) => {
             this.recentlyInteracted = true;
+
+
             console.log(event.clientX, event.clientY)
         })
 
@@ -214,14 +216,6 @@ class App {
             let poi = data[name];
             //console.log(poi["points"]);
 
-            let cameraBox = document.getElementById("camera");
-            let descriptionBox = document.createElement("div");
-            descriptionBox.id = "descriptionBox";
-            descriptionBox.innerHTML = `<h2>${poi["title"]}</h2><p>${poi["description"]}</p>`;
-            cameraBox.appendChild(descriptionBox);
-
-
-
             let diskMesh = new THREE.MeshBasicMaterial({ color: 0x4c4c4c });
             let domeMesh = new THREE.MeshBasicMaterial({ color: 0x2c73d2 });
             let lightMesh = new THREE.MeshStandardMaterial({
@@ -283,7 +277,17 @@ class App {
 
                     }));
             }
+
             this.globe.add(poiGroup);
+
+
+            let descriptionBox = document.getElementById("descriptionBox");
+            descriptionBox.classList.remove("hidden");
+            descriptionBox.innerHTML = `<p>${poi["description"]}</p>`;
+            setTimeout(() => {
+                descriptionBox.classList.add("hidden");
+                descriptionBox.innerHTML = "";
+            }, 5000);
         };
 
         //points to html list
@@ -359,6 +363,10 @@ class App {
         this.targetObject = poiGroup.children[1];
         this.globe.renderOrder = 1;
         poiGroup.renderOrder = 2;
+
+
+
+
 
         this.cameraTween = new Tween(this.camera.position, false) // Create a new tween that modifies 'coords'.
             .to({ x: 0, y: 0, z: 5 }, 3000) // Move to (300, 200) in 1 second.

@@ -1,7 +1,7 @@
 {
     "7c": {
         "title": "7 Cudów Starożytnego Świata",
-        "description": "To są rzeczy które te istoty uznały za wyjątkowe jakiś czas temu, patrząc na ich położenie, wszystko wskazuje na to że świat był wtedy znacznie mniejszy",
+        "description": "To są rzeczy które te istoty uznały za wyjątkowe jakiś czas temu, patrząc na ich położenie, świat był wtedy znacznie mniejszy",
         "points": [
             {
                 "name": "Piramida Cheopsa",
@@ -71,16 +71,6 @@
                     -0.7102,
                     0.5927,
                     0.3796
-                ]
-            },
-            {
-                "name": "",
-                "image": "",
-                "description": "",
-                "coordinates": [
-                    0,
-                    0,
-                    0
                 ]
             }
         ]

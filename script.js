@@ -9,6 +9,11 @@ pointMenu.addEventListener("click", () => {
 
 
 const aplikacja = new three.App();
-document.getElementById("start").addEventListener("click", aplikacja.init.bind(aplikacja));
+document.getElementById("start").addEventListener("click", () => {
+    aplikacja.init.bind(aplikacja)()
+    let descriptionBox = document.getElementById("descriptionBox");
+    descriptionBox.classList.add("hidden");
+    descriptionBox.innerHTML = "";
+});
 aplikacja.resize()
 strona.init(aplikacja.resize.bind(aplikacja));
