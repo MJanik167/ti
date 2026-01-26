@@ -10,7 +10,7 @@
 
 @font-face {
     font-family: venite;
-    src: url(VeniteAdoremus-rgRBA.ttf);
+    src: url(VeniteAdoremusPolski.ttf);
 }
 
 body,
@@ -330,7 +330,7 @@ span {
     padding: 10px;
     border-radius: 5px;
     max-width: 300px;
-    font-family: monospace;
+    font-family: venite, Arial, sans-serif;
 }
 
 .imageContainer {
@@ -361,7 +361,7 @@ span {
     background-color: rgba(0, 0, 0, 0.7);
     text-align: left;
 
-    font-family: monospace;
+    font-family: venite, Arial, sans-serif;
     color: rgb(46, 213, 115);
     border: rgb(46, 213, 115) groove 2px;
 }
@@ -378,7 +378,7 @@ span {
     box-sizing: border-box;
     overflow: auto;
 
-    font-family: monospace;
+    font-family: venite, Arial, sans-serif;
 }
 
 .hidden {
@@ -396,7 +396,7 @@ span {
     user-select: none;
     cursor: default;
 
-    font-family: monospace;
+    font-family: venite, Arial, sans-serif;
 }
 
 #learnmore_window {
@@ -407,7 +407,7 @@ span {
     color: rgba(46, 213, 116, 0.558);
     margin: 10vh 15vw;
 
-    font-family: monospace;
+    font-family: venite, Arial, sans-serif;
 
     overflow: auto;
     display: none;
