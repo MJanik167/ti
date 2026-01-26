@@ -287,7 +287,7 @@ class App {
             setTimeout(() => {
                 descriptionBox.classList.add("hidden");
                 descriptionBox.innerHTML = "";
-            }, 5000);
+            }, 10000);
         };
 
         //points to html list

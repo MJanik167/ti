@@ -1,12 +1,12 @@
 {
     "7c": {
         "title": "7 Cudów Starożytnego Świata",
-        "description": "To są rzeczy które te istoty uznały za wyjątkowe jakiś czas temu, patrząc na ich położenie, świat był wtedy znacznie mniejszy",
+        "description": "To są rzeczy które te istoty uznały za wyjątkowe jakiś czas temu, patrząc na ich położenie, świat musiał być wtedy znacznie mniejszy",
         "points": [
             {
                 "name": "Piramida Cheopsa",
                 "image": "zdjecia/7c/Great_Pyramid_of_Giza_-_Pyramid_of_Khufu.jpg",
-                "description": "Description for Point of Interest 1",
+                "description": "Największa z piramid w Gizie. Została wzniesiona jako grobowiec faraona Cheopsa około 2500 r. p.n.e",
                 "coordinates": [
                     -0.7531,
                     0.5072,
@@ -16,7 +16,7 @@
             {
                 "name": "Wiszące Ogrody Babilonu",
                 "image": "zdjecia/7c/babilon.jpg",
-                "description": "Description for Point of Interest 2",
+                "description": "Legendarne ogrody tarasowe, które według przekazów miały powstać w starożytnym Babilonie",
                 "coordinates": [
                     -0.5982,
                     0.5389,
@@ -26,7 +26,7 @@
             {
                 "name": "Świątynia Artemidy w Efezie",
                 "image": "zdjecia/7c/artemida.jpg",
-                "description": "Description for Point of Interest 2",
+                "description": "Monumentalna świątynia poświęcona bogini Artemidzie, słynąca z ogromnych rozmiarów i bogatych zdobień",
                 "coordinates": [
                     -0.6991,
                     0.6155,
@@ -36,7 +36,7 @@
             {
                 "name": "Posąg Zeusa w Olimpii",
                 "image": "zdjecia/7c/zeus.jpg",
-                "description": "Description for Point of Interest 2",
+                "description": "Gigantyczny posąg wykonany ze złota i kości słoniowej, przedstawiający Zeusa siedzącego na tronie. Uchodził za arcydzieło rzeźby starożytnej Grecji",
                 "coordinates": [
                     -0.7338,
                     0.6128,
@@ -46,7 +46,7 @@
             {
                 "name": "Mauzoleum w Halikarnasie",
                 "image": "zdjecia/7c/mauzoleum.jpg",
-                "description": "Description for Point of Interest 2",
+                "description": "Okazały grobowiec satrapy Mauzolosa, od którego imienia pochodzi słowo „mauzoleum”",
                 "coordinates": [
                     -0.7091,
                     0.6022,
@@ -56,7 +56,7 @@
             {
                 "name": "Latarnia morska na Faros",
                 "image": "zdjecia/7c/faros.jpg",
-                "description": "Description for Point of Interest 2",
+                "description": "Jedna z najwyższych budowli starożytnego świata, pełniąca funkcję nawigacyjną dla statków wpływających do portu w Aleksandrii.",
                 "coordinates": [
                     -0.7222,
                     0.6032,
@@ -66,7 +66,7 @@
             {
                 "name": "Kolos Rodyjski",
                 "image": "zdjecia/7c/kolos.jpeg",
-                "description": "Description for Point of Interest 2",
+                "description": "Olbrzymi posąg boga Heliosa wzniesiony na wyspie Rodos jako symbol zwycięstwa i potęgi miasta",
                 "coordinates": [
                     -0.7102,
                     0.5927,
@@ -77,7 +77,7 @@
     },
     "kz": {
         "title": "Korona Ziemi",
-        "description": "",
+        "description": "Najwyższe szczyty każdego z siedmiu większych framentów lądu, tubylcy nazywają je Koroną Ziemi. Z niewiadomych przyczyn ludzie uwielbiają wchodzić na ich szczyt, a później z nich schodzić.",
         "points": [
             {
                 "name": "Mount Everest",
@@ -163,7 +163,7 @@
     },
     "10miast_afryki": {
         "title": "10 Największych Miast Afryki",
-        "description": "",
+        "description": "Intrygujący kontynent, pełen różnorodnych kultur, jednocześnie niemożliwy do zamieszkania w znacznej części ze względu na ekstremalne warunki. Udało nam się znaleźć 10 największych skupisk ludzi w tym niezachęcającym klimacie.",
         "points": [
             {
                 "name": "Kair",
@@ -269,11 +269,11 @@
     },
     "2ws_bitwy": {
         "title": "Znane Bitwy II Wojny Światowej",
-        "description": "",
+        "description": "Niestety mieszkańcy tej planety mają tendencję do rozwiązywania konfliktów za pomocą przemocy. Nie tak dawno temu miał miejsce konfilkt, który swoją skalą objął cały świat. Udało nam się znaleźć ślady największych konfliktów z tego okresu.",
         "points": [
             {
                 "name": "Bitwa o Stalingrad",
-                "image": "",
+                "image": "https://wielkahistoria.pl/wp-content/uploads/2020/02/Radzieccy-piechurzy-mini.jpg",
                 "description": "Jedna z najważniejszych bitew II wojny światowej, która miała miejsce w latach 1942-1943.",
                 "coordinates": [
                     -0.4785,
@@ -283,7 +283,7 @@
             },
             {
                 "name": "Bitwa o Normandię",
-                "image": "",
+                "image": "https://wielkahistoria.pl/wp-content/uploads/2021/06/Operacja-Overlord-mini-1280x500.jpg",
                 "description": "Inwazja aliantów na okupowaną przez Niemcy Francję w czerwcu 1944 roku.",
                 "coordinates": [
                     -0.6546,
@@ -293,7 +293,7 @@
             },
             {
                 "name": "Bitwa o Midway",
-                "image": "",
+                "image": "https://img.dorzeczy.pl/img/bitwa-o-midway/7f/ec/47b4602b8069a6c170fa7fc81d31.jpeg",
                 "description": "Decydująca bitwa morska na Pacyfiku w czerwcu 1942 roku.",
                 "coordinates": [
                     0.7397,
@@ -303,7 +303,7 @@
             },
             {
                 "name": "Bitwa o El Alamein",
-                "image": "",
+                "image": "https://media2.nekropole.info/2016/10/Vtoroe-srazhenie-pri-El-Alamejne_5809fdd71420b.jpg",
                 "description": "Kluczowa bitwa na froncie afrykańskim w październiku 1942 roku.",
                 "coordinates": [
                     -0.7560,
@@ -313,7 +313,7 @@
             },
             {
                 "name": "Bitwa o Kursk",
-                "image": "",
+                "image": "https://static.prsa.pl/images/5f98e378-15b4-40df-bee0-81821758dcd5.jpg",
                 "description": "Największa bitwa pancerna w historii, która miała miejsce w lipcu 1943 roku.",
                 "coordinates": [
                     -0.4941,
@@ -323,7 +323,7 @@
             },
             {
                 "name": "Bitwa o Pearl Harbor",
-                "image": "",
+                "image": "https://tvn24.pl/_e/i/najnowsze/cdn-zdjecie2fda3b890daf6658581d0e3dad6c1e81-do-ataku-na-baze-us-navy-doszlo-7-grudnia-1941-roku-ph3112436/alternates/WEBP_FOUR_THREE_1280",
                 "description": "Atak japoński na amerykańską bazę morską w grudniu 1941 roku.",
                 "coordinates": [
                     0.8628,
@@ -335,12 +335,12 @@
     },
     "turystyczne": {
         "title": "Miejsca Turystyczne Świata",
-        "description": "",
+        "description": "Ludzie z całego świata podrużują do tych miejsc, zazwyczaj na chwilę. Jakaś siła ich tam przyciąga, ciężko powiedzieć czy to ze względu czci, zachwytu, lub jakiś innych czynników. Sam muszę przyznac, że miejsca te robią wrażenie",
         "points": [
             {
                 "name": "Wieża Eiffla",
-                "image": "",
-                "description": "Ikoniczna wieża wybudowana w roku .",
+                "image": "https://paryz.net.pl/wp-content/uploads/2015/08/Wieza-Eiffla-001.jpg",
+                "description": "Ikoniczna wieża wybudowana w roku 1889.",
                 "coordinates": [
                     -0.6580,
                     0.7523,
@@ -349,7 +349,7 @@
             },
             {
                 "name": "Wielki Mur Chiński",
-                "image": "",
+                "image": "https://kartkazpodrozy.pl/wp-content/uploads/2014/06/Wielki-Mur-Chinski_002.jpg.webp",
                 "description": "Rozległa fortyfikacja ciągnąca się przez tysiące kilometrów w Chinach.",
                 "coordinates": [
                     0.3208,
@@ -358,8 +358,8 @@
                 ]
             },
             {
-                "name": "Tadź Mahal",
-                "image": "",
+                "name": "Tadż Mahal",
+                "image": "https://dziendobry.tvn.pl/_e/i/najnowsze/cdn-zdjecie-fu29ig-tadz-mahal-dlaczego-warto-zobaczyc-to-mauzoleum-ph5994070/alternates/WEBP_SQUARE_1280",
                 "description": "Mauzoleum z białego marmuru w Indiach, zbudowane przez cesarza Szahdżahana.",
                 "coordinates": [
                     -0.1971,
@@ -369,7 +369,7 @@
             },
             {
                 "name": "Statua Wolności",
-                "image": "",
+                "image": "https://zzaoceanu.com/wp-content/uploads/2023/11/richard-iwaki-ZsqtZUAe3u4-unsplash-1-768x1024.jpg",
                 "description": "Symbol wolności i demokracji w Nowym Jorku, USA.",
                 "coordinates": [
                     -0.2084,
@@ -379,7 +379,7 @@
             },
             {
                 "name": "Machu Picchu",
-                "image": "",
+                "image": "https://www.machupicchureservations.org/wp-content/themes/machupicchureservations-child/images/placeholder_mobile.jpg",
                 "description": "Starożytne miasto Inków położone wysoko w Andach w Peru.",
                 "coordinates": [
                     -0.2877,
@@ -389,7 +389,7 @@
             },
             {
                 "name": "Koloseum",
-                "image": "",
+                "image": "https://puzzlemania-154aa.kxcdn.com/products/2024/puzzle-trefl-1500-pieces-colosseum-rome-3.webp",
                 "description": "Starożytny amfiteatr w Rzymie, Włochy.",
                 "coordinates": [
                     -0.7254,
@@ -399,7 +399,7 @@
             },
             {
                 "name": "Petra",
-                "image": "",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Petra_Treasury.jpg/960px-Petra_Treasury.jpg",
                 "description": "Starożytne miasto wykute w skałach w Jordanii.",
                 "coordinates": [
                     -0.7069,
@@ -409,7 +409,7 @@
             },
             {
                 "name": "Sydney Opera House",
-                "image": "",
+                "image": "https://cdn-imgix.headout.com/tour/20072/TOUR-IMAGE/d85280d5-3c4f-4f54-bd7a-6fc5cc68597f-10732-sydney-sydney-and-bondi-tour-with-sydney-opera-house-tour-01.jpg?auto=format&w=1051.2&h=540&q=90&fit=fit",
                 "description": "Ikoniczny budynek opery w Sydney, Australia.",
                 "coordinates": [
                     0.7233,
@@ -419,7 +419,7 @@
             },
             {
                 "name": "Angkor Wat",
-                "image": "",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Buddhist_monks_in_front_of_the_Angkor_Wat.jpg/1280px-Buddhist_monks_in_front_of_the_Angkor_Wat.jpg",
                 "description": "Największy kompleks świątynny na świecie, położony w Kambodży.",
                 "coordinates": [
                     0.2309,
@@ -429,7 +429,7 @@
             },
             {
                 "name": "Wodospad Niagara",
-                "image": "",
+                "image": "https://wodnesprawy.pl/wp-content/uploads/2025/01/Wodne-Sprawy_Wodospad-Niagara-%E2%80%93-jeden-z-najpiekniejszych-i-najpopularniejszych-na-swiecie.jpg",
                 "description": "Słynny wodospad na granicy USA i Kanady.",
                 "coordinates": [
                     -0.1406,
@@ -439,7 +439,7 @@
             },
             {
                 "name": "Burj Khalifa",
-                "image": "",
+                "image": "https://burjkhalifa-dubai.com/wp-content/uploads/2023/11/Burj-Khalifa-Homepage.webp",
                 "description": "Najwyższy budynek na świecie, zlokalizowany w Dubaju, Zjednoczone Emiraty Arabskie.",
                 "coordinates": [
                     -0.5139,
@@ -449,7 +449,7 @@
             },
             {
                 "name": "Santorini",
-                "image": "",
+                "image": "https://api.museann.pl/wp-content/uploads/2025/01/3jipkzdiug4.jpg",
                 "description": "Malownicza wyspa w Grecji, znana z białych budynków i niebieskich kopułek.",
                 "coordinates": [
                     -0.7237,
@@ -459,7 +459,7 @@
             },
             {
                 "name": "Wielki Kanion",
-                "image": "",
+                "image": "https://i.ytimg.com/vi/CaQfjHokevk/maxresdefault.jpg",
                 "description": "Imponujący kanion w stanie Arizona, USA.",
                 "coordinates": [
                     0.2976,
@@ -469,7 +469,7 @@
             },
             {
                 "name": "Chichen Itza",
-                "image": "",
+                "image": "https://media.brate.com/images/ameryka-polnocna/meksyk/chichen-itza/chichen-itza-1.jpeg?tr=n-hero",
                 "description": "Starożytne miasto Majów w Meksyku, znane z piramidy Kukulkana.",
                 "coordinates": [
                     -0.0168,
@@ -479,7 +479,7 @@
             },
             {
                 "name": "Wyspy Wielkanocne",
-                "image": "",
+                "image": "https://i.gremicdn.pl/image/free/568d031a3112fcccc8c43b1bec7b0cf7/?t=resize:fill:948:593,enlarge:1",
                 "description": "Znane z tajemniczych posągów Moai, położone na Oceanie Spokojnym.",
                 "coordinates": [
                     0.2986,
@@ -489,7 +489,7 @@
             },
             {
                 "name": "Świątynia Małpi las w Ubud",
-                "image": "",
+                "image": "https://cdn.getyourguide.com/img/tour/4632e20dafc32f11424471c81060843e0dadd599b4ecee37c5f8e8949c01b182.jpg/148.jpg",
                 "description": "Znana świątynia w Bali, otoczona przez małpy i bujną roślinność.",
                 "coordinates": [
                     0.4211,
@@ -498,7 +498,5 @@
                 ]
             }
         ]
-    },
-    "cuda_natury": [],
-    "najwieksze_akwaria": []
+    }
 }

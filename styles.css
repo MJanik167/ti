@@ -379,6 +379,7 @@ span {
     overflow: auto;
 
     font-family: venite, Arial, sans-serif;
+    font-size: 1.1rem;
 }
 
 .hidden {
@@ -455,7 +456,7 @@ footer {
 }
 
 #ai {
-    background-image: url("zdjecia/ikony/czatai.jpg");
+    background-image: url("zdjecia/ikony/czatai.png");
     background-size: cover;
     background-position: center;
 }
